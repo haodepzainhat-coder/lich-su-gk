@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ôn Luyện Lịch Sử 12 - Giữa Kì 1</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- ================= MÀN HÌNH 1: CẤU HÌNH & THIẾT LẬP (START SCREEN) ================= -->
+  <div id="startScreen" class="min-h-screen flex flex-col justify-center items-center p-4">
+    <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+      <!-- Banner Header -->
+      <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 p-6 text-white text-center">
+        <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+          Đề cương ôn tập giữa HK1
+        </span>
+        <h1 class="text-2xl font-extrabold tracking-tight">ÔN TẬP LỊCH SỬ 12</h1>
+        <p class="text-blue-100 text-xs mt-1">Trắc nghiệm 4 lựa chọn & Đúng / Sai đối chiếu trực quan</p>
+      </div>
+
+      <!-- Nội dung cài đặt -->
+      <div class="p-6 space-y-5">
+        <!-- 1. Chọn bài học -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+            1. Chọn phần nội dung ôn tập:
+          </label>
+          
+          <!-- Dropdown tùy chỉnh thu gọn gọn gàng -->
+          <div class="relative">
+            <!-- Nút bấm hiển thị mục đang chọn, bấm vào để mở danh sách -->
+            <button type="button" id="lessonDropdownBtn" class="w-full flex items-center justify-between p-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 rounded-xl text-left transition shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <div class="flex items-center gap-3">
+                <span id="selectedLessonIcon" class="text-xl">📚</span>
+                <div>
+                  <div id="selectedLessonTitle" class="text-sm font-bold text-slate-900">Tất cả các bài (Bài 1 ➔ Bài 5)</div>
+                  <div id="selectedLessonDesc" class="text-[11px] text-slate-500">Bao gồm toàn bộ câu hỏi trắc nghiệm & đúng/sai</div>
+                </div>
+              </div>
+              <svg id="dropdownArrow" class="w-5 h-5 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <!-- Danh sách các bài học (ẩn mặc định, bấm nút trên mới bung ra) -->
+            <div id="lessonDropdownMenu" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-xl z-30 overflow-hidden divide-y divide-slate-100 max-h-72 overflow-y-auto custom-scroll">
+              <!-- Tất cả các bài -->
+              <div class="lesson-option p-3 cursor-pointer hover:bg-blue-50 transition flex items-center justify-between bg-blue-50/60" data-value="all" data-icon="📚" data-title="Tất cả các bài (Bài 1 ➔ Bài 5)" data-desc="Bao gồm toàn bộ câu hỏi trắc nghiệm & đúng/sai">
+                <div class="flex items-center gap-3">
+                  <span class="text-lg">📚</span>
+                  <div>
+                    <div class="text-sm font-bold text-slate-900">Tất cả các bài (Bài 1 ➔ Bài 5)</div>
+                    <div class="text-xs text-slate-500">Tổng hợp toàn bộ nội dung giữa kì 1</div>
+                  </div>
+                </div>
+                <span class="text-blue-600 font-bold text-sm checkmark">✓</span>
+              </div>
+
+              <!-- Bài 1 -->
+              <div class="lesson-option p-3 cursor-pointer hover:bg-blue-50 transition flex items-center justify-between" data-value="b1" data-icon="🌐" data-title="Bài 1: Liên hợp quốc (LHQ)" data-desc="12 câu trắc nghiệm • 3 câu Đúng/Sai">
+                <div class="flex items-center gap-3">
+                  <span class="text-lg">🌐</span>
+                  <div>
+                    <div class="text-sm font-bold text-slate-900">Bài 1: Liên hợp quốc (LHQ)</div>
+                    <div class="text-xs text-slate-500">Bối cảnh, mục tiêu, nguyên tắc hoạt động & vai trò</div>
+                  </div>
+                </div>
+                <span class="text-blue-600 font-bold text-sm checkmark hidden">✓</span>
+              </div>
+
+              <!-- Bài 2 -->
+              <div class="lesson-option p-3 cursor-pointer hover:bg-blue-50 transition flex items-center justify-between" data-value="b2" data-icon="⚖️" data-title="Bài 2: Trật tự thế giới trong Chiến tranh lạnh" data-desc="14 câu trắc nghiệm">
+                <div class="flex items-center gap-3">
+                  <span class="text-lg">⚖️</span>
+                  <div>
+                    <div class="text-sm font-bold text-slate-900">Bài 2: Trật tự thế giới trong Chiến tranh lạnh</div>
+                    <div class="text-xs text-slate-500">Trật tự hai cực I-an-ta & đối đầu Đông – Tây</div>
+                  </div>
+                </div>
+                <span class="text-blue-600 font-bold text-sm checkmark hidden">✓</span>
+              </div>
+
+              <!-- Bài 3 -->
+              <div class="lesson-option p-3 cursor-pointer hover:bg-blue-50 transition flex items-center justify-between" data-value="b3" data-icon="🧭" data-title="Bài 3: Trật tự thế giới sau Chiến tranh lạnh" data-desc="11 câu trắc nghiệm • 2 câu Đúng/Sai">
+                <div class="flex items-center gap-3">
+                  <span class="text-lg">🧭</span>
+                  <div>
+                    <div class="text-sm font-bold text-slate-900">Bài 3: Trật tự thế giới sau Chiến tranh lạnh</div>
+                    <div class="text-xs text-slate-500">Hòa hoãn, kinh tế trọng điểm & trật tự đa cực</div>
+                  </div>
+                </div>
+                <span class="text-blue-600 font-bold text-sm checkmark hidden">✓</span>
+              </div>
+
+              <!-- Bài 4 -->
+              <div class="lesson-option p-3 cursor-pointer hover:bg-blue-50 transition flex items-center justify-between" data-value="b4" data-icon="🤝" data-title="Bài 4: Sự ra đời và phát triển của ASEAN" data-desc="16 câu trắc nghiệm • 3 câu Đúng/Sai">
+                <div class="flex items-center gap-3">
+                  <span class="text-lg">🤝</span>
+                  <div>
+                    <div class="text-sm font-bold text-slate-900">Bài 4: Sự ra đời và phát triển của ASEAN</div>
+                    <div class="text-xs text-slate-500">Mục tiêu ban đầu và quá trình mở rộng ASEAN 10</div>
+                  </div>
+                </div>
+                <span class="text-blue-600 font-bold text-sm checkmark hidden">✓</span>
+              </div>
+
+              <!-- Bài 5 -->
+              <div class="lesson-option p-3 cursor-pointer hover:bg-blue-50 transition flex items-center justify-between" data-value="b5" data-icon="🌏" data-title="Bài 5: Cộng đồng ASEAN" data-desc="11 câu trắc nghiệm • 3 câu Đúng/Sai">
+                <div class="flex items-center gap-3">
+                  <span class="text-lg">🌏</span>
+                  <div>
+                    <div class="text-sm font-bold text-slate-900">Bài 5: Cộng đồng ASEAN</div>
+                    <div class="text-xs text-slate-500">Quá trình hình thành, 3 trụ cột & triển vọng</div>
+                  </div>
+                </div>
+                <span class="text-blue-600 font-bold text-sm checkmark hidden">✓</span>
+              </div>
+            </div>
+          </div>
+          <!-- Input ẩn lưu giá trị bài được chọn -->
+          <input type="hidden" id="selectedLessonValue" value="all">
+        </div>
+
+        <!-- 2. Tùy chọn đảo câu hỏi -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+            2. Chế độ thứ tự câu hỏi:
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+              <input type="radio" name="shuffleOption" value="no" checked class="w-4 h-4 text-blue-600 focus:ring-blue-600 cursor-pointer">
+              <div class="text-xs font-semibold text-slate-700">
+                <span class="block font-bold text-slate-900">Không đảo câu</span>
+                Theo thứ tự đề cương
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+              <input type="radio" name="shuffleOption" value="yes" class="w-4 h-4 text-blue-600 focus:ring-blue-600 cursor-pointer">
+              <div class="text-xs font-semibold text-slate-700">
+                <span class="block font-bold text-slate-900">Đảo câu hỏi</span>
+                Xáo trộn ngẫu nhiên
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 3. Chế độ học tập -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+            3. Chế độ ôn luyện:
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+              <input type="radio" name="modeOption" value="exam" checked class="w-4 h-4 text-blue-600 focus:ring-blue-600 cursor-pointer">
+              <div class="text-xs font-semibold text-slate-700">
+                <span class="block font-bold text-slate-900">Làm bài thi</span>
+                Nộp bài xong mới xem đáp án
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+              <input type="radio" name="modeOption" value="study" class="w-4 h-4 text-blue-600 focus:ring-blue-600 cursor-pointer">
+              <div class="text-xs font-semibold text-slate-700">
+                <span class="block font-bold text-slate-900">Xem đáp án sẵn</span>
+                Hiện sẵn đáp án đúng xanh lá
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Hướng dẫn màu sắc trực quan -->
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-900 flex items-start gap-2">
+          <span class="text-base">💡</span>
+          <div>
+            <strong>Màu sắc nhận diện:</strong>
+            <span class="inline-flex items-center text-blue-700 font-bold ml-1">● Đang chọn: Xanh nước</span> | 
+            <span class="inline-flex items-center text-emerald-600 font-bold ml-1">● Đúng: Xanh lá</span> | 
+            <span class="inline-flex items-center text-red-600 font-bold ml-1">● Sai: Đỏ</span>
+          </div>
+        </div>
+
+        <!-- Nút bấm bắt đầu -->
+        <button id="startExamBtn" class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition transform hover:-translate-y-0.5 text-base flex justify-center items-center gap-2">
+          <span>🚀</span> BẮT ĐẦU ÔN LUYỆN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MÀN HÌNH 2: GIAO DIỆN LÀM BÀI (EXAM SCREEN) ================= -->
+  <div id="examScreen" class="hidden min-h-screen flex flex-col">
+    <!-- Header cố định -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-20 shadow-sm">
+      <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <button id="backToConfigBtn" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-600 text-xs font-bold flex items-center gap-1 border border-slate-200">
+            <span>‹</span> Chọn lại bài
+          </button>
+          <h2 id="currentLessonBadge" class="text-xs sm:text-sm font-bold text-blue-700 truncate max-w-[200px] sm:max-w-xs">
+            Bài 1
+          </h2>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-700">
+            Tiến độ: <span id="progressCount" class="text-blue-600">0</span>/<span id="totalQuestionsCount">0</span>
+          </div>
+          <button id="resetCurrentExamBtn" class="text-xs text-slate-600 hover:text-blue-600 border border-slate-200 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 transition">
+            Làm lại
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Thẻ nhắc nhở & giải thích màu sắc -->
+    <div class="bg-white border-b border-slate-200 py-2">
+      <div class="max-w-4xl mx-auto px-4 flex flex-wrap justify-between items-center gap-2 text-xs text-slate-600">
+        <div>
+          Trạng thái: <span id="examStatusText" class="font-bold text-slate-900">Đang làm bài...</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="flex items-center gap-1 font-bold text-blue-600">● Đang chọn: Xanh nước</span>
+          <span class="flex items-center gap-1 font-bold text-emerald-600">● Đúng: Xanh lá</span>
+          <span class="flex items-center gap-1 font-bold text-red-600">● Sai: Đỏ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thanh lọc kết quả sau khi nộp bài -->
+    <div id="postSubmitFilterBar" class="hidden bg-slate-100 border-b border-slate-200 py-2.5">
+      <div class="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-slate-700">Lọc kết quả:</span>
+          <div class="inline-flex rounded-lg border border-slate-300 bg-white p-0.5" role="group">
+            <button type="button" id="filterAllQuestionsBtn" onclick="setPostSubmitFilter('all')" class="px-3 py-1 font-bold rounded-md bg-slate-800 text-white transition">
+              Tất cả (<span id="countFilterAll">0</span>)
+            </button>
+            <button type="button" id="filterWrongQuestionsBtn" onclick="setPostSubmitFilter('wrong')" class="px-3 py-1 font-bold rounded-md text-red-600 hover:bg-red-50 transition">
+              ⚠️ Chỉ câu sai (<span id="countFilterWrong">0</span>)
+            </button>
+            <button type="button" id="filterCorrectQuestionsBtn" onclick="setPostSubmitFilter('correct')" class="px-3 py-1 font-bold rounded-md text-emerald-600 hover:bg-emerald-50 transition">
+              ✓ Chỉ câu đúng (<span id="countFilterCorrect">0</span>)
+            </button>
+          </div>
+        </div>
+        <div id="wrongNoticeText" class="text-xs font-semibold text-slate-600"></div>
+      </div>
+    </div>
+
+    <!-- Khung hiển thị danh sách câu hỏi -->
+    <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 flex-1">
+      <div id="questionsContainer" class="space-y-6">
+        <!-- Render danh sách câu hỏi bằng JavaScript -->
+      </div>
+    </main>
+
+    <!-- Footer thanh điều khiển cố định đáy màn hình -->
+    <footer class="bg-white border-t border-slate-200 py-3 sticky bottom-0 z-20 shadow-lg">
+      <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+        <span class="text-xs text-slate-500 font-medium">Lịch Sử 12 - Ôn tập Giữa HK1</span>
+        <button id="submitExamBtn" class="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl shadow-md shadow-blue-600/30 transition">
+          Nộp bài & Xem đáp án
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================= MODAL THÔNG BÁO TỰ CHẾ (KHÔNG DÙNG ALERT/CONFIRM) ================= -->
+  <div id="appModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 transform transition-all">
+      <div id="modalIconContainer" class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 bg-blue-100 text-blue-600 font-bold text-xl">
+        !
+      </div>
+      <h3 id="modalTitle" class="text-lg font-extrabold text-center text-slate-900 mb-2">Thông báo</h3>
+      <div id="modalMessage" class="text-xs sm:text-sm text-slate-600 text-center leading-relaxed mb-6">
+        Nội dung thông báo
+      </div>
+      <div id="modalActions" class="flex gap-3 justify-center">
+        <!-- Nút hành động render động -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // DỮ LIỆU ĐỀ CƯƠNG ĐẦY ĐỦ (BÀI 1 ĐẾN BÀI 5 - LƯỢC BỎ TỰ LUẬN BÀI 6)
+    const rawQuizData = [
+      // ---------- BÀI 1: LIÊN HỢP QUỐC ----------
+      {
+        id: "b1_tn_1",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Tại Hội nghị I-an-ta (2-1945), nguyên thủ 3 nước nào sau đây thống nhất thành lập tổ chức Liên hợp quốc?",
+        options: [
+          { text: "Mỹ – Anh – Pháp.", isCorrect: false },
+          { text: "Liên Xô – Anh – Pháp.", isCorrect: false },
+          { text: "Đức – Pháp – Mỹ.", isCorrect: false },
+          { text: "Liên Xô – Anh – Mỹ.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tn_2",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "“Duy trì hoà bình và an ninh quốc tế” là mục tiêu hoạt động của tổ chức nào sau đây?",
+        options: [
+          { text: "Hiệp hội các quốc gia Đông Nam Á (ASEAN).", isCorrect: false },
+          { text: "Liên minh châu Âu (EU).", isCorrect: false },
+          { text: "Hiệp ước Bắc Đại Tây Dương (NATO).", isCorrect: false },
+          { text: "Liên hợp quốc (UN).", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tn_3",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Hội nghị quốc tế nào tuyên bố thành lập tổ chức, đồng thời thông qua Hiến chương của Liên hợp quốc?",
+        options: [
+          { text: "Hội nghị Giơ – ne – vơ.", isCorrect: false },
+          { text: "Hội nghị Xanphranxixcô.", isCorrect: true },
+          { text: "Hội nghị Ianta.", isCorrect: false },
+          { text: "Hội nghị Pôtx - đam.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_4",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Vai trò duy trì hoà bình, an ninh quốc tế của Liên hợp quốc được thể hiện thông qua hoạt động nào sau đây?",
+        options: [
+          { text: "Xây dựng chương trình hỗ trợ các nước về vốn, tri thức, kĩ thuật,...", isCorrect: false },
+          { text: "Đề ra mục tiêu phát triển Thiên niên kỉ nhằm xoá bỏ đói nghèo.", isCorrect: false },
+          { text: "Kí điều ước quốc tế về quyền phụ nữ và trẻ em.", isCorrect: false },
+          { text: "Thủ tiêu hệ thống thuộc địa của chủ nghĩa thực dân.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tn_4b",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Tổ chức Liên hợp quốc khi mới thành lập không đề cập mục tiêu nào sau đây?",
+        options: [
+          { text: "Giải quyết hòa bình trên bán đảo Triều Tiên.", isCorrect: true },
+          { text: "Duy trì hòa nền hòa bình và an ninh thế giới.", isCorrect: false },
+          { text: "Giải quyết các vấn đề mang tính toàn cầu.", isCorrect: false },
+          { text: "Phát triển các mối quan hệ giữa các dân tộc.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_5",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Ngay từ khi thành lập, Hiến chương Liên hợp quốc đã xác định mục tiêu hàng đầu của tổ chức này là gì?",
+        options: [
+          { text: "Thúc đẩy quan hệ hữu nghị hợp tác giữa các nước.", isCorrect: false },
+          { text: "Duy trì nền hòa bình và an ninh trên thế giới.", isCorrect: true },
+          { text: "Giúp đỡ các dân tộc trên thế giới cùng nhau phát triển.", isCorrect: false },
+          { text: "Giải quyết các tranh chấp và xung đột trên thế giới.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_6",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Nội dung nào sau đây không phải là nguyên tắc hoạt động của tổ chức Liên hợp quốc?",
+        options: [
+          { text: "Không can thiệp vào công việc nội bộ của bất kỳ nước nào.", isCorrect: false },
+          { text: "Tôn trọng toàn vẹn lãnh thổ và độc lập chính trị của tất cả các nước.", isCorrect: false },
+          { text: "Bình đẳng chủ quyền giữa các quốc gia quyền tự quyết của các dân tộc.", isCorrect: false },
+          { text: "Tiến hành hợp tác giữa các nước trên nguyên tắc bình đẳng và tự quyết.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tn_7",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Việt Nam vận dụng nguyên tắc “Giải quyết tranh chấp quốc tế bằng biện pháp hoà bình” của Liên hợp quốc để giải quyết vấn đề nào hiện nay?",
+        options: [
+          { text: "Thực hiện công nghiệp hoá và hiện đại hoá đất nước.", isCorrect: false },
+          { text: "Phát triển nền kinh tế thị trường theo định hướng xã hội chủ nghĩa.", isCorrect: false },
+          { text: "Bảo vệ chủ quyền biên giới, biển, đảo và toàn vẹn lãnh thổ.", isCorrect: true },
+          { text: "Nâng cao vị thế của Việt Nam trên trường quốc tế.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_8",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Nhận định nào dưới đây phản ánh đúng vai trò của tổ chức Liên hợp quốc?",
+        options: [
+          { text: "Là một tổ chức quốc tế phát triển năng động vì sự ổn định hợp tác của toàn thế giới.", isCorrect: false },
+          { text: "Là diễn đàn quốc tế lớn nhất, vừa hợp tác vừa đấu tranh vì hòa bình, an ninh thế giới.", isCorrect: true },
+          { text: "Là một tổ chức quốc tế tạo dựng quan hệ thân thiện với tất cả các nước trên thế giới.", isCorrect: false },
+          { text: "Là một liên kết chính trị - kinh tế lớn nhất hành tinh vì sự ổn định của toàn nhân loại.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_9",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Nội dung nào sau đây phản ánh không đúng về quan hệ của Việt Nam với Liên hợp quốc?",
+        options: [
+          { text: "Việt Nam là một thành viên từng chê nhạt tổ chức Liên hợp quốc vào năm 1977.", isCorrect: true },
+          { text: "Việt Nam đã đóng góp vào giải quyết vấn đề hòa bình và lương thực trên thế giới.", isCorrect: false },
+          { text: "Việt Nam hai lần được các nước bầu làm ủy viên không thường trực của Hội đồng bảo an.", isCorrect: false },
+          { text: "Nhiều cơ quan chuyên môn của Liên hợp quốc đang hoạt động tích cực ở Việt Nam.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_10",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Trong bối cảnh thế giới phân chia thành hai cực, hai phe (1945 – 1991) nguyên tắc hoạt động nào được xem là có ý nghĩa thực tiễn nhất của tổ chức Liên hợp quốc?",
+        options: [
+          { text: "Giải quyết các tranh chấp quốc tế biện pháp hòa bình.", isCorrect: true },
+          { text: "Không can thiệp vào công việc nội bộ của bất kỳ nước nào.", isCorrect: false },
+          { text: "Bình đẳng về chủ quyền của tất cả các thành viên.", isCorrect: false },
+          { text: "Duy trì hòa bình, an ninh thế giới.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tn_11",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Nhận xét nào sau đây về sự thành lập tổ chức Liên hợp quốc là không đúng?",
+        options: [
+          { text: "Phù hợp với khát vọng hòa bình chung của nhân dân thế giới.", isCorrect: false },
+          { text: "Quá trình hình thành trải qua nhiều hội nghị quốc tế khác nhau.", isCorrect: false },
+          { text: "Các cường quốc Đồng minh giữ vai trò chủ đạo trong việc thành lập.", isCorrect: false },
+          { text: "Quá trình thành lập lâu dài và chịu ảnh hưởng của chiến tranh lạnh.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tn_12",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "single",
+        question: "Tổ chức Liên hợp quốc ra đời trong bối cảnh nào sau đây?",
+        options: [
+          { text: "Chiến tranh thế giới thứ hai bước vào giai đoạn cuối.", isCorrect: true },
+          { text: "Chiến tranh thế giới thứ hai đã hoàn toàn kết thúc.", isCorrect: false },
+          { text: "Chiến tranh thế giới thứ hai mới bắt đầu bùng nổ.", isCorrect: false },
+          { text: "Chiến tranh thế giới thứ nhất bước vào giai đoạn cuối.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b1_tf_1",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "tf",
+        quote: "“Duy trì hoà bình và an ninh quốc tế, và để đạt được mục đích đó, thi hành những biện pháp tập thể có hiệu quả để phòng ngừa và loại trừ các mối đe doạ hoà bình, cấm mọi hành vi xâm lược và phá hoại hoà bình khác, điều chỉnh hoặc giải quyết các vụ tranh chấp hoặc những tình thế có tính chất quốc tế có thể đưa đến sự phá hoại hoà bình, bằng biện pháp hoà bình theo đúng nguyên tắc của công lí và pháp luật quốc tế”.\n(Trích: Điều 1, Hiến chương Liên hợp quốc)",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Đoạn tư liệu thể hiện mục tiêu của Liên hợp quốc là duy trì hoà bình và an ninh quốc phòng cho tất cả các quốc gia.", isCorrect: false },
+          { label: "b", text: "Các quốc gia có thể xâm lược hoặc tiến hành các hoạt động quân sự đối với nước khác nếu vi phạm chủ quyền.", isCorrect: false },
+          { label: "c", text: "Trong số các mục tiêu của Liên hợp quốc, duy trì hoà bình và an ninh quốc tế là mục tiêu được đặt lên hàng đầu.", isCorrect: true },
+          { label: "d", text: "Ngày nay, Liên hợp quốc vẫn tiếp tục thực hiện mục tiêu giải quyết các vụ tranh chấp, xung đột quốc tế bằng biện pháp hoà bình.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tf_2",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "tf",
+        quote: "“ … do quá trình hình thành và phát triển của LHQ phản ánh bối cảnh và so sánh lực lượng trên thế giới, chịu tác động của lợi ích các quốc gia, bên cạnh đó là những khó khăn về tài chính và huy động nguồn lực, nên hiệu quả hoạt động của LHQ trên nhiều lĩnh vực còn hạn chế, chưa đáp ứng được với những thay đổi và thách thức toàn cầu mới cũng như những biến chuyển về so sánh lực lượng bên trong LHQ, nhất là việc gia tăng số lượng thành viên, trong một số trường hợp hoạt động không hiệu quả, thiếu minh bạch, bị lợi dụng và áp dụng tiêu chuẩn kép để gây sức ép và can thiệp”.",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Đoạn tư liệu phản ánh những thách thức mà tổ chức Liên Hợp quốc phải đối diện với tình hình mới hiện nay.", isCorrect: true },
+          { label: "b", text: "Một trong những nguyên nhân dẫn đến việc hoạt động không hiểu quả của tổ chức LHQ chính là do những biến chuyển về so sánh lực lượng bên trong của tổ chức này.", isCorrect: true },
+          { label: "c", text: "LHQ là một tổ chức với vai trò chính là duy trì hòa bình an ninh thế giới vì vậy không bị chi phối bởi lợi ích giữa các quốc gia.", isCorrect: false },
+          { label: "d", text: "Để nâng cao hiệu quả hoạt động của LHQ việc cải tổ Liên hợp quốc một cách toàn diện và có hệ thống, phù hợp với tình hình quốc tế mới là một yêu cầu cấp thiết khách quan.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b1_tf_3",
+        lesson: "b1",
+        lessonTitle: "Bài 1: Tổ chức Liên Hợp Quốc (LHQ)",
+        type: "tf",
+        quote: "Tư liệu 1: “Hiến chương này hoàn toàn không cho phép Liên hợp quốc được can thiệp vào những công việc thực chất thuộc thẩm quyền nội bộ của bất kỳ quốc gia nào, và không đòi hỏi các thành viên của Liên hợp quốc phải đưa những công việc loại này ra để giải quyết theo quy định của Hiến chương;..”\nTư liệu 2: “Năm 1960, Đại hội đồng Liên hợp quốc đã thông qua bản Tuyên ngôn thủ tiêu hoàn toàn chủ nghĩa thực dân, trao trả độc lập cho các quốc gia và dân tộc thuộc địa. Đó là một sự kiện chính trị quan trọng.”",
+        question: "Đọc hai đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Theo Hiến chương, Liên hợp quốc không được can thiệp vào công việc nội bộ của bất kỳ quốc gia nào.", isCorrect: true },
+          { label: "b", text: "Tuyên ngôn về thủ tiêu hoàn toàn chủ nghĩa thực dân đã góp phần mở ra thời kỳ “phi thực dân hóa”.", isCorrect: true },
+          { label: "c", text: "Việc các thuộc địa giành được độc lập hoàn toàn phụ thuộc vào Tuyên ngôn về thủ tiêu chủ nghĩa thực dân.", isCorrect: false },
+          { label: "d", text: "Nguyên tắc không can thiệp vào công việc nội bộ được tất cả các thành viên thực hiện nghiêm chỉnh.", isCorrect: false }
+        ]
+      },
+
+      // ---------- BÀI 2: TRẬT TỰ THẾ GIỚI TRONG CHIẾN TRANH LẠNH ----------
+      {
+        id: "b2_tn_1",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Hội nghị I-an-ta (tháng 2 – 1945) diễn ra trong giai đoạn nào của Chiến tranh thế giới thứ hai?",
+        options: [
+          { text: "Vừa mới kết thúc.", isCorrect: false },
+          { text: "Bùng nổ và lan rộng.", isCorrect: false },
+          { text: "Giai đoạn sắp kết thúc.", isCorrect: true },
+          { text: "Đang diễn ra ác liệt.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_2",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Quyết định nào sau đây không phải là của Hội nghị I-an-ta (tháng 2 – 1945)?",
+        options: [
+          { text: "Thành lập tổ chức quốc tế là Liên hợp quốc.", isCorrect: false },
+          { text: "Thống nhất tiêu diệt tận gốc chủ nghĩa phát xít.", isCorrect: false },
+          { text: "Hình thành trật tự thế giới mới sau chiến tranh.", isCorrect: true },
+          { text: "Phân chia phạm vi ảnh hưởng của Liên Xô, Mỹ.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_3",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Mục tiêu chung được các cường quốc thỏa thuận trong Hội nghị I-an-ta (tháng 2 – 1945) là",
+        options: [
+          { text: "chấm dứt tình trạng nội chiến ở Trung Quốc, Áo và Phần Lan.", isCorrect: false },
+          { text: "thủ tiêu chủ nghĩa thực dân và chủ nghĩa phân biệt chủng tộc.", isCorrect: false },
+          { text: "xây dựng nước Đức trở thành quốc gia thống nhất và dân chủ.", isCorrect: false },
+          { text: "tiêu diệt tận gốc phát xít Đức và chủ nghĩa quân phiệt Nhật Bản.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b2_tn_4",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Trật tự thế giới mới được hình thành sau Chiến tranh thế giới thứ hai (1939 – 1945) là",
+        options: [
+          { text: "đơn cực.", isCorrect: false },
+          { text: "I-an-ta.", isCorrect: true },
+          { text: "Vec-xai.", isCorrect: false },
+          { text: "đa cực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_5",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Năm 1989, tại đảo Man-ta Mỹ và Liên Xô đã có hành động nào sau đây?",
+        options: [
+          { text: "Tuyên bố chung về vũ khí chiến lược.", isCorrect: false },
+          { text: "Ký nhiều hiệp định thương mại tự do.", isCorrect: false },
+          { text: "Tuyên bố chấm dứt Chiến tranh lạnh.", isCorrect: true },
+          { text: "Cam kết hòa bình giữa Mỹ và Liên Xô.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_6",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Sự kiện nào sau đây đánh dấu trật tự hai cực I-an-ta chấm dứt?",
+        options: [
+          { text: "Liên Xô chính thức tan rã (1991).", isCorrect: true },
+          { text: "Chiến tranh lạnh kết thúc (1989).", isCorrect: false },
+          { text: "Bức tường Béc-lin sụp đổ (1989).", isCorrect: false },
+          { text: "Khủng hoảng năng lượng (1973).", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_7",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Xu thế hoà hoãn Đông – Tây xuất hiện có tác động như thế nào đến Trật tự hai cực I-an-ta?",
+        options: [
+          { text: "Đã xuất hiện xu thế đa cực.", isCorrect: false },
+          { text: "Các mâu thuẫn càng sâu sắc.", isCorrect: false },
+          { text: "Làm suy yếu trật tự hai cực.", isCorrect: true },
+          { text: "Đã củng cố trật tự hai cực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_8",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Đâu là một trong những nguyên nhân Mỹ và Liên Xô quyết định chấm dứt cuộc Chiến tranh lạnh (1947 – 1989)?",
+        options: [
+          { text: "Sự vươn lên mạnh mẽ của Nhật Bản, Tây Âu.", isCorrect: true },
+          { text: "Các nước Cộng hoà trong liên bang đòi ly khai.", isCorrect: false },
+          { text: "Nước Mỹ khủng hoảng kinh tế, chính trị sâu sắc.", isCorrect: false },
+          { text: "Nhân dân hai nước đều phản đối Chiến tranh lạnh.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_9",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Một trong những nguyên nhân nào sau đây đã dẫn đến sự sụp đổ của Trật tự thế giới hai cực I-an-ta?",
+        options: [
+          { text: "Thắng lợi của phong trào giải phóng dân tộc và ra đời của các quốc gia độc lập.", isCorrect: true },
+          { text: "Các nước tư bản chạy đua sản xuất hàng hóa ồ ạt, dẫn đến lượng cầu ít hơn cung.", isCorrect: false },
+          { text: "Sự phát triển không đồng đều về kinh tế và chính trị của các nước tư bản chủ nghĩa.", isCorrect: false },
+          { text: "Mâu thuẫn về quyền lợi, thuộc địa và thị trường giữa các nước đế quốc thắng trận.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_11",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Nguyên nhân nào sau đây đã dẫn đến sự sụp đổ của Trật tự thế giới hai cực I- an-ta?",
+        options: [
+          { text: "Mỹ và Liên Xô đều bị suy giảm sức mạnh trên nhiều mặt.", isCorrect: true },
+          { text: "Công cuộc cải tổ của Goóc-ba-chốp (Liên Xô) thành công.", isCorrect: false },
+          { text: "Sự suy giảm về kinh tế của Nhật Bản, các nước Tây Âu.", isCorrect: false },
+          { text: "Mỹ và Liên Xô đã tận dụng cơ hội để phát triển nhanh.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_12",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây là biểu hiện xác lập và phát triển của trật tự hai cực Ianta?",
+        options: [
+          { text: "Liên Xô khủng hoảng và chính thức tan rã (12/1991).", isCorrect: false },
+          { text: "Chiến tranh lạnh kết thúc (1989).", isCorrect: false },
+          { text: "Khối Hiệp ước VACSAVA ra đời (1955).", isCorrect: true },
+          { text: "Khủng hoảng năng lượng (1973).", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_13",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây là đặc điểm nổi bật của trật tự thế giới mới được hình thành sau Chiến tranh thế giới thứ hai?",
+        options: [
+          { text: "Một trật tự thế giới được thiết lập trên cơ sở nước thắng trận thống trị nước bại trận.", isCorrect: false },
+          { text: "Xác lập trật tự thế giới mới của các nước tư bản chủ nghĩa do Mỹ đứng đầu, chi phối.", isCorrect: false },
+          { text: "Hình thành trật tự thế giới hai cực đối lập: cực Liên Xô và cực Mỹ đứng đầu mỗi bên.", isCorrect: true },
+          { text: "Trật tự thế giới được thiết lập trên cơ sở các nước thắng trận đoàn kết, đồng thuận.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_14",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Một trong những khu vực được hội nghị I-an-ta (1945) quy định thuộc phạm vi ảnh hưởng của Mỹ là",
+        options: [
+          { text: "Tây Âu.", isCorrect: true },
+          { text: "Đông Bec lin.", isCorrect: false },
+          { text: "Mông Cổ.", isCorrect: false },
+          { text: "Trung Đông.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b2_tn_15",
+        lesson: "b2",
+        lessonTitle: "Bài 2: Trật tự thế giới trong Chiến tranh lạnh",
+        type: "single",
+        question: "Trật tự thế giới hai cực I-an-ta có biểu hiện nào sau đây?",
+        options: [
+          { text: "Tình hình thế giới luôn ổn định.", isCorrect: false },
+          { text: "Diễn ra cuộc chạy đua vũ trang gay gắt, kéo dài.", isCorrect: true },
+          { text: "Hình thành liên minh phát xít.", isCorrect: false },
+          { text: "Các nước đều lấy phát triển kinh tế làm trọng tâm.", isCorrect: false }
+        ]
+      },
+
+      // ---------- BÀI 3: TRẬT TỰ THẾ GIỚI SAU CHIẾN TRANH LẠNH ----------
+      {
+        id: "b3_tn_1",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây không phản ánh đúng xu thế phát triển của thế giới sau khi Chiến tranh lạnh chấm dứt?",
+        options: [
+          { text: "Trật tự thế giới đơn cực được xác lập trong quan hệ quốc tế.", isCorrect: true },
+          { text: "Các quốc gia đều tập trung lấy phát triển kinh tế làm trọng điểm.", isCorrect: false },
+          { text: "Hòa bình, hợp tác và phát triển là xu thế chủ đạo của thế giới.", isCorrect: false },
+          { text: "Xu thế toàn cầu hóa diễn ra ngày càng mạnh mẽ trên nhiều lĩnh vực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_2",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây phản ánh đúng xu thế phát triển của thế giới từ sau khi Chiến tranh lạnh chấm dứt?",
+        options: [
+          { text: "Các quốc gia đều tập trung lấy phát triển quân sự làm trọng điểm.", isCorrect: false },
+          { text: "Trật tự thế giới đơn cực được xác lập trong quan hệ quốc tế.", isCorrect: false },
+          { text: "Mỹ nắm vai trò là siêu cường duy nhất chi phối quan hệ quốc tế.", isCorrect: false },
+          { text: "Các nước điều chỉnh quan hệ theo hướng hòa hoãn, đối thoại, hợp tác.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b3_tn_3",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Đặc điểm nổi bật trong quan hệ quốc tế sau khi chiến tranh lạnh chấm dứt là",
+        options: [
+          { text: "Hợp tác chính trị - văn hóa là xu thế chủ đạo.", isCorrect: false },
+          { text: "Hai siêu cường Xô - Mĩ đối thoại, hợp tác.", isCorrect: false },
+          { text: "Hòa bình, hợp tác trở thành xu thế chủ đạo.", isCorrect: true },
+          { text: "Hai siêu cường Xô - Mĩ đối đầu gay gắt.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_4",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Sau Chiến tranh lạnh, các nước điều chỉnh quan hệ với nhau theo chiều hướng hòa hoãn, đối thoại, hợp tác chủ yếu là do",
+        options: [
+          { text: "trật tự hai cực I-an-ta đã được xác lập.", isCorrect: false },
+          { text: "nhu cầu ổn định để phát triển kinh tế.", isCorrect: true },
+          { text: "kinh tế Liên Xô đang lâm vào khủng hoảng.", isCorrect: false },
+          { text: "Mỹ và Liên Xô hạn chế chạy đua vũ trang.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_5",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây phản ánh đúng sự điều chỉnh quan hệ giữa các nước có chế độ chính trị khác nhau sau khi Chiến tranh lạnh chấm dứt?",
+        options: [
+          { text: "Giảm dần sự cạnh tranh về kinh tế.", isCorrect: false },
+          { text: "Thiết lập quan hệ đối tác chiến lược.", isCorrect: false },
+          { text: "Hòa hoãn, đối thoại, cùng phát triển.", isCorrect: true },
+          { text: "Giảm dần cuộc chạy đua vũ trang.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_6",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Sau Chiến tranh lạnh, hầu hết các quốc gia đều điều chỉnh chiến lược, tập trung vào phát triển",
+        options: [
+          { text: "kinh tế.", isCorrect: true },
+          { text: "quân sự.", isCorrect: false },
+          { text: "thể thao.", isCorrect: false },
+          { text: "vũ khí hạt nhân.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_7",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Biểu hiện nào dưới đây không phản ánh đúng xu thế phát triển của thế giới từ sau khi Chiến tranh lạnh chấm dứt?",
+        options: [
+          { text: "Các quốc gia đều tập trung lấy phát triển quân sự làm trọng điểm.", isCorrect: true },
+          { text: "Trật tự thế giới đa cực được xác lập trong quan hệ quốc tế.", isCorrect: false },
+          { text: "Hòa bình, hợp tác và phát triển là xu thế chủ đạo của thế giới.", isCorrect: false },
+          { text: "Xu thế toàn cầu hóa diễn ra ngày càng mạnh mẽ trên nhiều lĩnh vực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_8",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "“G20 (…) chiếm 2/3 dân số thế giới, 90% GDP toàn cầu và 80% thương mại quốc tế”\n“Diễn đàn APEC hiện có 21 thành viên, chiếm khoảng 38% số dân, 62% GDP và gần 50% thương mại thế giới”.\nCả hai đoạn thông tin trên đều phản ánh đặc điểm nào sau đây của trật tự thế giới đa cực?",
+        options: [
+          { text: "Vai trò ngày càng gia tăng của các tổ chức kinh tế, tài chính quốc tế và khu vực.", isCorrect: true },
+          { text: "Những thời cơ và thách thức đặt ra cho các nước trong trật tự thế giới đa cực.", isCorrect: false },
+          { text: "Sự suy giảm sức mạnh tương đối của Mỹ trong tương quan với các cường quốc khác.", isCorrect: false },
+          { text: "Quan hệ vừa hợp tác vừa cạnh tranh giữa các cường quốc trong trật tự thế giới đa cực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_9",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây phản ánh điểm khác biệt giữa trật tự đa cực so với trật tự hai cực I-an-ta?",
+        options: [
+          { text: "Bị chi phối bởi quyền lợi của các cường quốc.", isCorrect: false },
+          { text: "Hòa bình, đối thoại, hợp tác là xu thế chủ đạo.", isCorrect: true },
+          { text: "Hình thành sau khi chiến tranh thế giới kết thúc.", isCorrect: false },
+          { text: "Các nước tập trung phát triển quân sự là trọng điểm.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_10",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "“Không có một trung tâm quyền lực thống trị, thay vào đó, nhiều quốc gia, khu vực tạo ra thế cân bằng về kinh tế, chính trị, quân sự toàn cầu”. Đoạn thông tin trên phản ánh đặc điểm của trật tự thế giới nào sau đây?",
+        options: [
+          { text: "trật tự đa cực.", isCorrect: true },
+          { text: "Trật tự đơn cực.", isCorrect: false },
+          { text: "Trật tự hai cực I-an-ta.", isCorrect: false },
+          { text: "Trật tự Vécxai – Oasinhtơn.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tn_11",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "single",
+        question: "Nội dung nào sau đây phản ánh đúng đặc điểm của trật tự thế giới đa cực?",
+        options: [
+          { text: "Lợi ích của dân tộc được đặt lên vị trí hàng đầu.", isCorrect: true },
+          { text: "Sức mạnh của Mỹ được tăng cường tuyệt đối.", isCorrect: false },
+          { text: "Có sự cân bằng giữa hai hệ thống xã hội đối lập.", isCorrect: false },
+          { text: "Được thành lập ngay sau khi chiến tranh lạnh kết thúc.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b3_tf_1",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "tf",
+        quote: "“Bài học của thời kì Chiến tranh lạnh đã chứng tỏ phương thức quan hệ quốc tế lấy đối đầu chính trị - quân sự là chủ yếu không còn phù hợp, phải chịu nhiều tổn thất hoặc thất bại như hai nước Xô – Mỹ và một bị thương, một bị mất. Trong khi đó, phương thức lấy hợp tác và cạnh tranh về kinh tế - chính trị là chính lại thu được nhiều tiến bộ, kết quả như các nước Đức, Nhật và NICs. Sự hưng thịnh hay suy vong của một quốc gia quyết định bởi sức mạnh tổng hợp của quốc gia đó, mà chủ yếu là thực lực kinh tế và khoa học – kĩ thuật”.",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Kinh tế và khoa học – kĩ thuật là hai yếu tố chủ yếu tạo nên sức mạnh tổng hợp của một quốc gia sau khi chiến tranh lạnh chấm dứt.", isCorrect: true },
+          { label: "b", text: "Một trong những bài học rút ra từ thời kì chiến tranh lạnh cho tất cả các quốc gia là không nên tập trung vào phát triển quân sự, quốc phòng đất nước.", isCorrect: false },
+          { label: "c", text: "Sau thời kì chiến tranh lạnh, Xô – Mỹ lấy đối đầu về chính trị - quân sự là chủ yếu, trong khi đó Đức và Nhật Bản lại lấy hợp tác và cạnh tranh về kinh tế - chính trị là chủ yếu.", isCorrect: false },
+          { label: "d", text: "Trong thời kì chiến tranh lạnh và sau thời kì chiến tranh lạnh, nội dung của quan hệ quốc tế có sự điều chỉnh từ chỗ lấy yếu tố quân sự sang lấy yếu tố kinh tế là trọng tâm.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b3_tf_2",
+        lesson: "b3",
+        lessonTitle: "Bài 3: Trật tự thế giới sau Chiến tranh lạnh",
+        type: "tf",
+        quote: "“Trật tự thế giới mới này [đa cực] được hình thành như thế nào, còn tùy thuộc ở nhiều nhân tố: Sự phát triển về thực lực kinh tế, chính trị, quân sự của các cường quốc Mỹ, Nga, Trung Quốc, Anh, Pháp, Nhật Bản, Đức trong cuộc chạy đua về sức mạnh quốc gia tổng hợp…; Sự lớn mạnh của lực lượng cách mạng thế giới...; Sự phát triển của cách mạng khoa học – kĩ thuật sẽ còn tiếp tục tạo ra những “đột phá” và biến chuyển trên cục diện thế giới”.",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Đoạn tư liệu cung cấp thông tin về những biểu hiện của trật tự thế giới đa cực đang được hình thành hiện nay.", isCorrect: false },
+          { label: "b", text: "Cuộc chạy đua về sức mạnh tổng hợp của các cường quốc là một trong những nhân tố quan trọng tác động đến sự hình thành trật tự thế giới đa cực.", isCorrect: true },
+          { label: "c", text: "Mỹ, Nga, Trung Quốc là những cường quốc giữ vai trò chi phối quan hệ quốc tế trong cả trật tự hai cực I-an-ta và trật tự đa cực.", isCorrect: false },
+          { label: "d", text: "Cuộc cách mạng khoa học – kĩ thuật vừa là nguyên nhân dẫn đến sự xói mòn và sụp đổ của trật tự hai cực I-an-ta, vừa là nhân tố tác động đến sự hình thành của trật tự thế giới đa cực.", isCorrect: true }
+        ]
+      },
+
+      // ---------- BÀI 4: SỰ RA ĐỜI VÀ PHÁT TRIỂN CỦA ASEAN ----------
+      {
+        id: "b4_tn_1",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Hiệp hội các quốc gia Đông Nam Á được thành lập năm 1967 tại",
+        options: [
+          { text: "Ma-ni-la (Phi-lip-pin).", isCorrect: false },
+          { text: "Cua-la Lăm-pơ (Ma-lai-xi-a).", isCorrect: false },
+          { text: "Ba-li (In-đô-nê-xi-a).", isCorrect: false },
+          { text: "Băng Cốc (Thái Lan).", isCorrect: true }
+        ]
+      },
+      {
+        id: "b4_tn_2",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Các nước sáng lập tham gia sáng lập ASEAN là",
+        options: [
+          { text: "Việt Nam, Thái Lan, Phi-lip-pin, Xin-ga-po, Ma-lai-xi-a.", isCorrect: false },
+          { text: "In-đô-nê-xi-a, Ma-lai-xi-a, Phi-lip-pin, Xin-ga-po, Thái Lan.", isCorrect: true },
+          { text: "Thái Lan, Phi-líp-pin, Xin-ga-po, Ma-lai-xi-a, Mi-an-ma.", isCorrect: false },
+          { text: "Lào, Thái Lan, Phi-lip-pin, Xin-ga-po, Ma-lai-xi-a.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_3",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Tổ chức Hiệp hội các quốc gia Đông Nam Á (ASEAN) được thành lập năm 1967 trong hoàn cảnh nào sau đây?",
+        options: [
+          { text: "Xu thế toàn cầu hóa ảnh hưởng mạnh mẽ đến khu vực.", isCorrect: false },
+          { text: "Nền kinh tế các nước vẫn còn nghèo nàn, lạc hậu.", isCorrect: false },
+          { text: "Tất cả các nước Đông Nam Á giành được độc lập.", isCorrect: false },
+          { text: "Những mâu thuẫn trong khu vực lên tới đỉnh điểm.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b4_tn_4",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Sau khi Chiến tranh lạnh kết thúc (1991), quốc gia nào đã gia nhập tổ chức ASEAN?",
+        options: [
+          { text: "Thái Lan.", isCorrect: false },
+          { text: "Brunei.", isCorrect: false },
+          { text: "Myanmar.", isCorrect: true },
+          { text: "In-đô-nê-xi-a.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_5",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Hiệp hội các quốc gia Đông Nam Á (ASEAN) ra đời trong hoàn cảnh nào sau đây?",
+        options: [
+          { text: "Thế giới và khu vực đang có những chuyển biến quan trọng.", isCorrect: true },
+          { text: "Tất cả các nước khu vực Đông Nam Á đều giành được độc lập.", isCorrect: false },
+          { text: "Chiến tranh lạnh kết thúc, các dân tộc đang hòa hợp, hòa giải.", isCorrect: false },
+          { text: "Xu thế hòa hoãn Đông - Tây trở thành chủ đạo trên thế giới.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_6",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Trong giai đoạn nào, tổ chức ASEAN tập trung chủ yếu vào hợp tác chính trị - an ninh “xây dựng lòng tin và học cách hòa giải”?",
+        options: [
+          { text: "Giai đoạn 1967 - 1976.", isCorrect: false },
+          { text: "Giai đoạn 1976 - 1999.", isCorrect: true },
+          { text: "Giai đoạn 1999 - 2015.", isCorrect: false },
+          { text: "Giai đoạn 2015 đến nay.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_7",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Mục tiêu ban đầu của tổ chức ASEAN là",
+        options: [
+          { text: "phát triển kinh tế và văn hóa.", isCorrect: true },
+          { text: "phát triển kinh tế và chính trị.", isCorrect: false },
+          { text: "hợp tác về an ninh và chính trị.", isCorrect: false },
+          { text: "hợp tác về chính trị và văn hóa.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_8",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Quá trình mở rộng thành viên của tổ chức Hiệp hội các quốc gia Đông Nam Á từ ASEAN 5 thành ASEAN 10 diễn ra mạnh mẽ chủ yếu trong giai đoạn nào sau đây?",
+        options: [
+          { text: "Giai đoạn 1967 - 1976.", isCorrect: false },
+          { text: "Giai đoạn 1976 - 1999.", isCorrect: true },
+          { text: "Giai đoạn 1999 - 2015.", isCorrect: false },
+          { text: "Giai đoạn 2015 đến nay.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_9",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Trong giai đoạn 2015 đến nay, tổ chức Hiệp hội các quốc gia Đông Nam Á (ASEAN) chủ yếu tập trung vào vấn đề nào sau đây?",
+        options: [
+          { text: "Thành lập và xây dựng Cộng đồng ASEAN.", isCorrect: true },
+          { text: "Xây dựng lòng tin và học cách hòa giải.", isCorrect: false },
+          { text: "Kết nạp và mở rộng thành viên của tổ chức.", isCorrect: false },
+          { text: "Bước đầu mở rộng quan hệ hợp tác bên ngoài.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_10",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Trong những năm 60 của thế kỉ XX, xu hướng nào trên thế giới tác động tới sự ra đời của tổ chức Hiệp ước các quốc gia Đông Nam Á (ASEAN)?",
+        options: [
+          { text: "Đơn cực.", isCorrect: false },
+          { text: "Liên kết khu vực.", isCorrect: true },
+          { text: "Toàn cầu hóa.", isCorrect: false },
+          { text: "Hòa hoãn Đông - Tây.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_11",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Một trong những nguyên nhân thúc đẩy sự ra đời của tổ chức Hiệp hội các quốc gia Đông Nam Á (ASEAN) năm 1967 là",
+        options: [
+          { text: "yêu cầu hợp tác, phát triển giữa các nước trong khu vực.", isCorrect: true },
+          { text: "sự đe dọa của chủ nghĩa khủng bố đến an ninh khu vực.", isCorrect: false },
+          { text: "sự phát triển của xu thế liên kết khu vực và toàn cầu hoá.", isCorrect: false },
+          { text: "yêu cầu hợp tác để cạnh tranh với các siêu cường thế giới.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_12",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Một trong những mục đích thành lập của tổ chức ASEAN là",
+        options: [
+          { text: "đưa Đông Nam Á trở thành số 1 thế giới.", isCorrect: false },
+          { text: "xây dựng khối tư bản chủ nghĩa phát triển.", isCorrect: false },
+          { text: "thúc đẩy hòa bình - ổn định của khu vực.", isCorrect: true },
+          { text: "thúc đẩy sự hợp tác toàn diện, thống nhất.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_13",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Trong quá trình phát triển của ASEAN, giai đoạn từ 1967 - 1976 có đặc điểm",
+        options: [
+          { text: "tập trung hợp tác chính trị, an ninh.", isCorrect: false },
+          { text: "xây dựng nền móng phát triển thần kỳ.", isCorrect: false },
+          { text: "tránh mọi đối đầu về quân sự.", isCorrect: true },
+          { text: "nền kinh tế xuất khẩu mạnh mẽ.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_14",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Nội dung nào dưới đây là nguyên nhân đã thúc đẩy Việt Nam gia nhập tổ chức ASEAN?",
+        options: [
+          { text: "Quan hệ ASEAN và Tây ÂU chuyển sang đối thoại, hợp tác.", isCorrect: false },
+          { text: "Đây nội dung trong chính sách đối ngoại được Liên Xô đồng ý.", isCorrect: false },
+          { text: "Tất cả các nước Đông Nam Á đã gia nhập vào tổ chức ASEAN.", isCorrect: false },
+          { text: "Tổ chức ASEAN phù hợp với yêu cầu phát triển của Việt Nam.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b4_tn_15",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Quá trình phát triển từ “ASEAN 5” đến “ASEAN 10” không chịu tác động của",
+        options: [
+          { text: "chủ nghĩa khủng bố quốc tế.", isCorrect: true },
+          { text: "xu thế toàn cầu hóa.", isCorrect: false },
+          { text: "cuộc Chiến tranh lạnh.", isCorrect: false },
+          { text: "xu thế liên kết khu vực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tn_16",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "single",
+        question: "Việc mở rộng thành viên của Hiệp hội các quốc gia Đông Nam Á (ASEAN) diễn ra lâu dài và đầy trở ngại chủ yếu là do",
+        options: [
+          { text: "có nhiều khác biệt về văn hóa giữa các quốc gia dân tộc.", isCorrect: false },
+          { text: "nguyên tắc hoạt động của ASEAN không phù hợp với một số nước.", isCorrect: false },
+          { text: "tác động của cuộc Chiến tranh lạnh và cục diện hai cực, hai phe.", isCorrect: true },
+          { text: "các nước thực hiện những chiến lược phát triển kinh tế khác nhau.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b4_tf_1",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "tf",
+        quote: "“Quyết tâm sử dụng những cố gắng cần thiết bước đầu để bảo đảm việc công nhận và tôn trọng Đông Nam Á là một khu vực hòa bình, tự do và trung lập, không có sự can thiệp dưới bất kì hình thức và phương cách nào của các nước ngoài khu vực...”\n(ASEAN, Tuyên bố về khu vực hòa bình, tự do và trung lập, ngày 27-11-1971)",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Nội dung tư liệu đề cập sự kiện các nước Đông Nam Á thành lập khu vực hòa bình, tự do, trung lập.", isCorrect: false },
+          { label: "b", text: "Nội dung tuyên bố nhấn mạnh việc ASEAN không chấp nhận sự can thiệp của các nước ngoài khu vực.", isCorrect: true },
+          { label: "c", text: "Văn kiện trên có vai trò quyết định trong việc duy trì hòa bình, thống nhất và trung lập của Đông Nam Á.", isCorrect: false },
+          { label: "d", text: "Tuyên bố về khu vực hòa bình, tự do và trung lập vẫn có giá trị đối với tổ chức ASEAN ngày nay.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b4_tf_2",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "tf",
+        quote: "“ASEAN là một điều kỳ diệu sống động và mang hơi thở của cuộc sống hiện đại...\nASEAN đã mang lại hòa bình và thịnh vượng cho một khu vực từng gặp nhiều vấn đề, tạo ra sự hài hòa giữa các nền văn minh ở khu vực vốn đa dạng nhất hành tinh, mang lại niềm hy vọng cho người dân sống tại khu vực...”",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "ASEAN đã có nhiều nỗ lực trong việc kiến tạo hòa bình và thịnh vượng cho một khu vực từng gặp nhiều mất mát, đau thương do sự nô dịch và thống trị của chủ nghĩa thực dân và tạo ra sự hài hòa giữa các nền văn minh đa dạng ở khu vực Đông Nam Á.", isCorrect: true },
+          { label: "b", text: "Sự phát triển của ASEAN cũng đóng vai trò như một chất xúc tác quan trọng, góp phần làm kiềm chế những ảnh hưởng của các nước lớn vào khu vực Đông Nam Á, nhất là sự trỗi dậy một cách hòa bình của Trung Quốc.", isCorrect: true },
+          { label: "c", text: "ASEAN là một tổ chức hoàn hảo và ít phải đối mặt với các thách thức trong tương lai, mang lại hòa bình, thịnh vượng cho người dân sống tại khu vực.", isCorrect: false },
+          { label: "d", text: "Lịch sử và văn hoá Đông Nam Á đã ảnh hưởng đến nguyên tắc hoạt động, mục tiêu, định hướng phát triển của ASEAN và là một phần quan trọng để ASEAN phát triển thành một tổ chức liên kết khu vực thành công.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b4_tf_3",
+        lesson: "b4",
+        lessonTitle: "Bài 4: Sự ra đời và phát triển của ASEAN",
+        type: "tf",
+        quote: "Bảng dữ kiện mở rộng thành viên ASEAN:\n- 1967: ASEAN 5 (Thái Lan, Ma-lai-xi-a, In-đô-nê-xi-a, Xin-ga-po, Phi- líp-pin)\n- 1984: Bru-nây gia nhập (thứ 6)\n- 1995: Việt Nam gia nhập (thứ 7)\n- 1997: Lào và Mi-an-ma gia nhập\n- 1999: Cam-pu-chia gia nhập (thứ 10)",
+        question: "Dựa vào bảng số liệu trên, xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "ASEAN đã trải qua hành trình hơn 30 năm để đưa ASEAN 5 trở thành ASEAN 10.", isCorrect: true },
+          { label: "b", text: "Quá trình mở rộng ASEAN phù hợp với mong muốn, lợi ích của mỗi thành viên, đảm bảo hoà bình, ổn định của cả khu vực, đồng thời nâng cao vị thế của Hiệp hội trên trường quốc tế.", isCorrect: true },
+          { label: "c", text: "Việc Bru-nây tham gia ASEAN đã giúp cho tổ chức này lớn mạnh cả về quy mô, tiềm lực và tổ chức, giúp ASEAN trở thành một tổ chức khu vực vững mạnh.", isCorrect: false },
+          { label: "d", text: "Việc các nước Đông Dương gia nhập ASEAN đã chấm dứt sự nghi kỵ, chia rẽ, đối đầu, mở ra một thời kỳ phát triển mới của hòa bình, ổn định, hợp tác và phát triển trong khu vực.", isCorrect: true }
+        ]
+      },
+
+      // ---------- BÀI 5: CỘNG ĐỒNG ASEAN ----------
+      {
+        id: "b5_tn_1",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Mục tiêu “xây dựng một cộng đồng thịnh vượng và hòa bình ở Đông Nam Á” được đề ra năm 1967 trong văn kiện nào sau đây của tổ chức ASEAN?",
+        options: [
+          { text: "Hiệp ước Ba-li.", isCorrect: false },
+          { text: "Tuyên bố Băng Cốc.", isCorrect: true },
+          { text: "Hiến chương ASEAN.", isCorrect: false },
+          { text: "Tầm nhìn ASEAN 2020.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_2",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Năm 1997, văn kiện nào sau đây của tổ chức ASEAN đã được thông qua?",
+        options: [
+          { text: "Tuyên bố về khu vực hòa bình, tự do và trung lập.", isCorrect: false },
+          { text: "Hiệp ước Thân thiện và hợp tác ở Đông Nam Á.", isCorrect: false },
+          { text: "Tuyên bố Cua-la Lăm-pua.", isCorrect: false },
+          { text: "Tầm nhìn ASEAN 2020.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b5_tn_3",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Cộng đồng Chính trị - An ninh ASEAN được thành lập nhằm mục tiêu nào sau đây?",
+        options: [
+          { text: "Tạo ra một khối phòng thủ chung để bảo vệ các nước.", isCorrect: false },
+          { text: "Tạo dựng môi trường hòa bình và an ninh ở khu vực.", isCorrect: true },
+          { text: "Tạo ra một thị trường và nền tảng sản xuất thống nhất.", isCorrect: false },
+          { text: "Nâng cao ý thức về cộng đồng và bản sắc chung ASEAN.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_4",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Cộng đồng Kinh tế ASEAN được thành lập nhằm mục tiêu nào sau đây?",
+        options: [
+          { text: "Xây dựng ASEAN thành khu vực kinh tế ổn định, thịnh vượng, cạnh tranh cao.", isCorrect: true },
+          { text: "Xây dựng ASEAN thành khu vực có nền kinh tế phát triển mạnh nhất thế giới.", isCorrect: false },
+          { text: "Xây dựng ASEAN thành cộng đồng lấy con người và bình đẳng làm trung tâm.", isCorrect: false },
+          { text: "Phát huy các giá trị văn hóa truyền thống của khu vực, tạo dựng bản sắc ASEAN.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_5",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Một trong những nội dung của Cộng đồng Kinh tế ASEAN là",
+        options: [
+          { text: "Xây dựng một xã hội chia sẻ, hòa thuận, đùm bọc lẫn nhau.", isCorrect: false },
+          { text: "Tạo ra một thị trường chung và cơ sở sản xuất thống nhất.", isCorrect: true },
+          { text: "Tạo dựng một môi trường hòa bình và an ninh ở khu vực.", isCorrect: false },
+          { text: "Thúc đẩy trao đổi văn hóa, đề cao thống nhất trong đa dạng.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_6",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Trong quá trình hoạt động và phát triển, Cộng đồng ASEAN phải đối mặt với thách thức nào sau đây?",
+        options: [
+          { text: "Sự đa dạng của các nước thành viên về chế độ chính trị, tôn giáo.", isCorrect: true },
+          { text: "Quá trình hoàn thiện các thể chế, chính sách tiếp tục được đẩy mạnh.", isCorrect: false },
+          { text: "Quan hệ với các đối tác bên ngoài khu vực ngày càng rộng mở.", isCorrect: false },
+          { text: "Mức độ liên kết, hợp tác giữa các nước thành viên ngày càng sâu rộng.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_7",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Nội dung nào sau đây là triển vọng của Cộng đồng ASEAN?",
+        options: [
+          { text: "Vai trò, vị thế của ASEAN đã được khẳng định trên trường quốc tế.", isCorrect: true },
+          { text: "Cộng đồng ASEAN là tổ chức có quy mô kinh tế đứng đầu thế giới.", isCorrect: false },
+          { text: "Dịch bệnh, biến đổi khí hậu, ô nhiễm môi trường đã được kiểm soát.", isCorrect: false },
+          { text: "Sự đa dạng về chế độ chính trị, tôn giáo, văn hóa giữa các thành viên.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_8",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Văn kiện Lộ trình xây dựng Cộng đồng ASEAN (2009 – 2015) đã",
+        options: [
+          { text: "xác định nguyên tắc trong quan hệ giữa các nước.", isCorrect: false },
+          { text: "tạo hành lang pháp lý cho xây dựng Cộng đồng ASEAN.", isCorrect: false },
+          { text: "vạch ra kế hoạch để xây dựng Cộng đồng ASEAN.", isCorrect: true },
+          { text: "đánh dấu Cộng đồng ASEAN chính thức có hiệu lực.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tn_9",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Trong giai đoạn từ năm 2000 đến năm 2015, tổ chức ASEAN không có hoạt động nào sau đây?",
+        options: [
+          { text: "Thông qua bản Hiến chương ASEAN.", isCorrect: false },
+          { text: "Chính thức thành lập Cộng đồng ASEAN.", isCorrect: false },
+          { text: "Thông qua Lộ trình xây dựng Cộng đồng ASEAN 2009 – 2015.", isCorrect: false },
+          { text: "Thông qua văn kiện Tầm nhìn ASEAN 2020.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b5_tn_10",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Nội dung nào sau đây không phản ánh đúng ý nghĩa sự thành lập Cộng đồng ASEAN?",
+        options: [
+          { text: "Đáp ứng nguyện vọng phát triển của các quốc gia thành viên.", isCorrect: false },
+          { text: "Đưa sự hợp tác toàn diện giữa các nước lên một nấc thang mới.", isCorrect: false },
+          { text: "Góp phần định hướng cho sự phát triển của ASEAN trong tương lai.", isCorrect: false },
+          { text: "Đánh dấu sự hoàn thiện về thể chế, chính sách hợp tác của ASEAN.", isCorrect: true }
+        ]
+      },
+      {
+        id: "b5_tn_11",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "single",
+        question: "Nhận xét nào sau đây là đúng về quá trình thành lập Cộng đồng ASEAN?",
+        options: [
+          { text: "Cộng đồng ASEAN ra đời là kết quả của quá trình chuẩn bị lâu dài.", isCorrect: true },
+          { text: "Sự tương đồng về thể chế chính trị là cơ sở thành lập Cộng đồng ASEAN.", isCorrect: false },
+          { text: "Quá trình thành lập Cộng đồng ASEAN không chịu tác động từ bên ngoài.", isCorrect: false },
+          { text: "Kế hoạch xây dựng Cộng đồng ASEAN được đề ra ngay khi thành lập tổ chức.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tf_1",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "tf",
+        quote: "Bảng dữ kiện về quá trình phát triển của ASEAN:\n- 1967: Tuyên bố Băng Cốc - Hiệp hội các quốc gia Đông Nam Á (ASEAN) chính thức thành lập.\n- 2007: Hiến chương ASEAN được thông qua.\n- 2015: Cộng đồng ASEAN chính thức thành lập.\n- 2020: Tuyên bố Hà Nội về Tầm nhìn sau năm 2025.",
+        question: "Dựa vào bảng dữ kiện trên, xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Ngày 22-11-2015, các nhà lãnh đạo ASEAN đã nhóm họp tại Ma-lai-xi-a, kí Tuyên bố Cua-la Lăm-pơ, chính thức thành lập Cộng đồng ASEAN.", isCorrect: true },
+          { label: "b", text: "Cộng đồng ASEAN được hình thành dựa trên ba trụ cột: Cộng đồng Chính trị - An ninh, Cộng đồng Kinh tế, Cộng đồng Văn hóa - Giáo dục.", isCorrect: false },
+          { label: "c", text: "Cơ sở pháp lí để xây dựng Cộng đồng ASEAN trở thành một cộng đồng có mức độ liên kết sâu rộng hơn, ràng buộc hơn trên là Hiến chương ASEAN.", isCorrect: true },
+          { label: "d", text: "Sự ra đời chính thức của Cộng đồng ASEAN vào ngày 31-12-2015 là kết quả của chặng đường gần 50 năm đấu tranh và phát triển của ASEAN.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tf_2",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "tf",
+        quote: "“Một trong những nguyên nhân có tác động mạnh mẽ tới sự phát triển của ASEAN chính là cội nguồn bản sắc văn hóa của khu vực. Do vậy, hợp tác vì một nền văn hóa ASEAN đầy bản sắc, đa dạng trong thống nhất là một mục tiêu cao cả mà chính phủ và nhân dân các nước ASEAN đã và đang tiến hành”.",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Cộng đồng Văn hóa - Xã hội ASEAN (ASCC) hướng đến xây dựng tình đoàn kết và thống nhất lâu bền giữa các quốc gia và dân tộc ASEAN bằng cách tạo dựng bản sắc chung.", isCorrect: true },
+          { label: "b", text: "Sự đa dạng văn hóa trong khu vực đã và đang mang lại nhiều lợi thế trong phát triển kinh tế, đặc biệt là kinh tế đối ngoại.", isCorrect: false },
+          { label: "c", text: "Bản sắc ASEAN được nhắc đến là “sự thống nhất trong đa dạng”; việc tạo dựng bản sắc ASEAN trong ASCC đóng vai trò rất quan trọng.", isCorrect: true },
+          { label: "d", text: "Sự đa dạng văn hóa (trong đó chủ yếu là tôn giáo) ít dẫn đến sự va chạm của các nền văn hóa. Lý do có thể là sự khác nhau của các hệ giá trị, chiều sâu tâm linh, tôn giáo hoặc tư tưởng.", isCorrect: false }
+        ]
+      },
+      {
+        id: "b5_tf_3",
+        lesson: "b5",
+        lessonTitle: "Bài 5: Cộng đồng ASEAN",
+        type: "tf",
+        quote: "“Nhằm định hướng cho giai đoạn phát triển tiếp theo, các nhà lãnh đạo ASEAN đã thông qua Tầm nhìn Cộng đồng ASEAN năm 2025, cam kết xây dựng cộng đồng hòa bình, ổn định và tự cường, ứng phó hiệu quả với các thách thức...\nChúng ta hoàn toàn có cơ sở tin tưởng rằng, hình ảnh một ASEAN hòa bình, ổn định và phát triển bền vững nhất định sẽ trở thành hiện thực trong những thập niên đầu của thế kỉ XXI”",
+        question: "Đọc đoạn tư liệu trên và xác định tính Đúng/Sai của từng mệnh đề:",
+        items: [
+          { label: "a", text: "Nội dung tư liệu khẳng định triển vọng phát triển của Cộng đồng ASEAN trong tương lai.", isCorrect: true },
+          { label: "b", text: "Tháng 11-2015, cùng với việc tuyên bố thành lập Cộng đồng ASEAN, các nhà lãnh đạo ASEAN đã thông qua văn kiện Tầm nhìn Cộng đồng ASEAN năm 2025.", isCorrect: true },
+          { label: "c", text: "Tầm nhìn Cộng đồng ASEAN năm 2025 nhằm xây dựng ASEAN thành cộng đồng mạnh về kinh tế và quân sự.", isCorrect: false },
+          { label: "d", text: "Trong những thập niên đầu của thế kỉ XXI, ASEAN sẽ trở thành một tổ chức khu vực mạnh nhất toàn cầu.", isCorrect: false }
+        ]
+      }
+    ];
+
+    // BIẾN TRẠNG THÁI ỨNG DỤNG
+    let isShuffle = false;
+    let isStudyMode = false;
+    let isExamSubmitted = false;
+    let currentFilter = 'all';
+    let postSubmitFilter = 'all'; // 'all', 'wrong', 'correct'
+    let userAnswers = {};
+    let currentQuestions = [];
+
+    // HÀM TIỆN ÍCH TRỘN MẢNG
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    // MODAL THAY THẾ CHO ALERT / CONFIRM
+    function showAppModal({ title, message, icon = '!', type = 'info', confirmText = 'Đồng ý', cancelText = null, onConfirm = null }) {
+      const modal = document.getElementById('appModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalMessage = document.getElementById('modalMessage');
+      const modalIconContainer = document.getElementById('modalIconContainer');
+      const modalActions = document.getElementById('modalActions');
+
+      modalTitle.textContent = title;
+      modalMessage.innerHTML = message;
+      modalIconContainer.textContent = icon;
+
+      if (type === 'danger') {
+        modalIconContainer.className = 'w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 bg-red-100 text-red-600 font-bold text-xl';
+      } else if (type === 'success') {
+        modalIconContainer.className = 'w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 bg-emerald-100 text-emerald-600 font-bold text-xl';
+      } else {
+        modalIconContainer.className = 'w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 bg-blue-100 text-blue-600 font-bold text-xl';
+      }
+
+      modalActions.innerHTML = '';
+
+      if (cancelText) {
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 text-slate-700 hover:bg-slate-100 transition';
+        cancelBtn.textContent = cancelText;
+        cancelBtn.onclick = () => {
+          modal.classList.add('hidden');
+        };
+        modalActions.appendChild(cancelBtn);
+      }
+
+      const confirmBtn = document.createElement('button');
+      confirmBtn.className = 'px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white transition shadow-sm';
+      confirmBtn.textContent = confirmText;
+      confirmBtn.onclick = () => {
+        modal.classList.add('hidden');
+        if (onConfirm) onConfirm();
+      };
+      modalActions.appendChild(confirmBtn);
+
+      modal.classList.remove('hidden');
+    }
+
+    // XÂY DỰNG BỘ CÂU HỎI THEO BỘ LỌC VÀ CHẾ ĐỘ ĐẢO
+    function buildQuestionSet() {
+      let filtered = rawQuizData.filter(item => {
+        if (currentFilter === 'all') return true;
+        return item.lesson === currentFilter;
+      });
+
+      if (isShuffle) {
+        filtered = shuffleArray(filtered);
+      }
+
+      currentQuestions = filtered;
+      document.getElementById('totalQuestionsCount').textContent = currentQuestions.length;
+      updateProgress();
+      renderAllQuestions();
+    }
+
+    // CẬP NHẬT TIẾN ĐỘ LÀM BÀI
+    function updateProgress() {
+      let done = 0;
+      currentQuestions.forEach(q => {
+        if (q.type === 'single') {
+          if (userAnswers[q.id] !== undefined) done++;
+        } else if (q.type === 'tf') {
+          const allFilled = q.items.every(it => userAnswers[`${q.id}_${it.label}`] !== undefined);
+          if (allFilled) done++;
+        }
+      });
+      document.getElementById('progressCount').textContent = done;
+    }
+
+    // HIỂN THỊ TẤT CẢ CÂU HỎI RA MÀN HÌNH
+    function renderAllQuestions() {
+      const container = document.getElementById('questionsContainer');
+      container.innerHTML = '';
+
+      // Kiểm tra trạng thái đúng/sai của từng câu hỏi
+      function isQuestionFullyCorrect(q) {
+        if (q.type === 'single') {
+          return userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect;
+        } else if (q.type === 'tf') {
+          return q.items.every(it => userAnswers[`${q.id}_${it.label}`] === it.isCorrect);
+        }
+        return false;
+      }
+
+      // Đếm số lượng câu đúng và câu sai/chưa xong
+      let correctQCount = 0;
+      let wrongQCount = 0;
+      currentQuestions.forEach(q => {
+        if (isQuestionFullyCorrect(q)) {
+          correctQCount++;
+        } else {
+          wrongQCount++;
+        }
+      });
+
+      const countAllEl = document.getElementById('countFilterAll');
+      const countWrongEl = document.getElementById('countFilterWrong');
+      const countCorrectEl = document.getElementById('countFilterCorrect');
+      if (countAllEl) countAllEl.textContent = currentQuestions.length;
+      if (countWrongEl) countWrongEl.textContent = wrongQCount;
+      if (countCorrectEl) countCorrectEl.textContent = correctQCount;
+
+      // Lọc danh sách câu hỏi dựa trên bộ lọc sau nộp bài
+      let questionsToDisplay = currentQuestions;
+      if (isExamSubmitted && postSubmitFilter === 'wrong') {
+        questionsToDisplay = currentQuestions.filter(q => !isQuestionFullyCorrect(q));
+      } else if (isExamSubmitted && postSubmitFilter === 'correct') {
+        questionsToDisplay = currentQuestions.filter(q => isQuestionFullyCorrect(q));
+      }
+
+      if (questionsToDisplay.length === 0) {
+        if (isExamSubmitted && postSubmitFilter === 'wrong') {
+          container.innerHTML = `<div class="p-8 text-center bg-white rounded-2xl shadow-sm text-emerald-600 font-bold text-sm">🎉 Tuyệt vời! Bạn không làm sai câu nào cả.</div>`;
+        } else if (isExamSubmitted && postSubmitFilter === 'correct') {
+          container.innerHTML = `<div class="p-8 text-center bg-white rounded-2xl shadow-sm text-red-600 font-bold text-sm">Chưa có câu nào hoàn toàn đúng trong bộ lọc này.</div>`;
+        } else {
+          container.innerHTML = `<div class="p-8 text-center bg-white rounded-2xl shadow-sm text-slate-500 text-sm">Không tìm thấy câu hỏi phù hợp.</div>`;
+        }
+        return;
+      }
+
+      const letters = ['A', 'B', 'C', 'D'];
+
+      questionsToDisplay.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.id = `card_${q.id}`;
+        
+        // Viền thẻ phân biệt câu đúng/sai sau khi nộp
+        const isCorrect = isQuestionFullyCorrect(q);
+        let borderHighlightClass = "border-slate-200";
+        if (isExamSubmitted && !isStudyMode) {
+          borderHighlightClass = isCorrect ? "border-emerald-300 ring-1 ring-emerald-200" : "border-red-300 ring-1 ring-red-200";
+        }
+        card.className = `bg-white border ${borderHighlightClass} rounded-2xl p-5 sm:p-6 shadow-sm transition hover:shadow-md`;
+
+        // Tìm vị trí gốc trong đề
+        const originalIndex = currentQuestions.findIndex(item => item.id === q.id);
+
+        let statusTag = '';
+        if (isExamSubmitted && !isStudyMode) {
+          statusTag = isCorrect 
+            ? `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-full">✓ Đúng</span>`
+            : `<span class="bg-red-100 text-red-700 text-[11px] font-bold px-2 py-0.5 rounded-full">⚠️ Làm sai</span>`;
+        }
+
+        let html = `
+          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md">
+                ${q.lessonTitle}
+              </span>
+              ${statusTag}
+            </div>
+            <span class="text-xs font-bold text-slate-400">
+              Câu ${originalIndex + 1}/${currentQuestions.length} • ${q.type === 'single' ? '4 Lựa chọn' : 'Đúng / Sai'}
+            </span>
+          </div>
+        `;
+
+        if (q.quote) {
+          html += `
+            <div class="mb-4 bg-slate-100 border-l-4 border-blue-500 p-3 rounded-r-xl text-xs sm:text-sm text-slate-700 italic leading-relaxed whitespace-pre-line">
+              ${q.quote}
+            </div>
+          `;
+        }
+
+        html += `<p class="font-bold text-slate-900 text-sm sm:text-base mb-4 leading-relaxed">${q.question}</p>`;
+
+        const isAnswerRevealed = isExamSubmitted || isStudyMode;
+
+        // DẠNG TRẮC NGHIỆM ĐƠN (4 LỰA CHỌN)
+        if (q.type === 'single') {
+          html += `<div class="space-y-2.5" id="opt_container_${q.id}">`;
+
+          q.options.forEach((opt, optIndex) => {
+            const isChecked = userAnswers[q.id] === optIndex;
+            let labelClass = "border-slate-200 hover:border-slate-300 hover:bg-slate-50";
+            let textClass = "text-slate-700 font-medium";
+            let badgeHtml = "";
+
+            if (isAnswerRevealed) {
+              if (opt.isCorrect) {
+                // ĐÁP ÁN ĐÚNG: Xanh lá cây
+                textClass = "text-emerald-800 font-bold";
+                labelClass = "border-emerald-500 bg-emerald-50/80 ring-1 ring-emerald-400";
+                badgeHtml = `<span class="ml-auto text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">✓ Đáp án đúng</span>`;
+              } else if (isChecked && !opt.isCorrect) {
+                // ĐÁP ÁN NGƯỜI DÙNG CHỌN SAI: Đỏ
+                textClass = "text-red-700 font-bold";
+                labelClass = "border-red-500 bg-red-50/80 ring-1 ring-red-400";
+                badgeHtml = `<span class="ml-auto text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">✗ Bạn chọn sai</span>`;
+              } else {
+                textClass = "text-slate-500";
+                labelClass = "border-slate-200 bg-slate-50/50 opacity-70";
+              }
+            } else if (isChecked) {
+              // KHI ĐANG LÀM BÀI: Chọn màu Xanh nước biển
+              labelClass = "border-sky-500 bg-sky-50 ring-2 ring-sky-300";
+              textClass = "text-sky-900 font-bold";
+            }
+
+            html += `
+              <label class="flex items-center gap-3 p-3 rounded-xl border ${labelClass} cursor-pointer transition select-none">
+                <input type="radio" 
+                       name="rad_${q.id}" 
+                       value="${optIndex}" 
+                       ${isChecked ? 'checked' : ''}
+                       ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
+                       class="w-4 h-4 text-sky-600 focus:ring-sky-500 cursor-pointer"
+                       onchange="selectSingleOption('${q.id}', ${optIndex})">
+                <div class="text-xs sm:text-sm ${textClass} leading-relaxed">
+                  <span class="font-extrabold mr-1.5">${letters[optIndex]}.</span>${opt.text}
+                </div>
+                ${badgeHtml}
+              </label>
+            `;
+          });
+
+          html += `</div>`;
+          html += `
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div id="msg_${q.id}" class="text-xs font-bold"></div>
+            </div>
+          `;
+
+        // DẠNG TRẮC NGHIỆM ĐÚNG / SAI
+        } else if (q.type === 'tf') {
+          html += `<div class="space-y-3" id="tf_container_${q.id}">`;
+
+          q.items.forEach(it => {
+            const userChoice = userAnswers[`${q.id}_${it.label}`];
+            let itemTextClass = "text-slate-800 font-medium";
+            let rowBorderClass = "border-slate-200 bg-slate-50/80";
+
+            const isTrueActive = userChoice === true;
+            const isFalseActive = userChoice === false;
+
+            // Phong cách cho nút Đúng / Sai
+            let trueBtnClass = "bg-white text-slate-700 border-slate-300 hover:bg-slate-100";
+            let falseBtnClass = "bg-white text-slate-700 border-slate-300 hover:bg-slate-100";
+            let statusFeedback = "";
+
+            if (!isAnswerRevealed) {
+              // Khi đang làm bài: Nút được chọn sẽ có màu Xanh nước biển
+              if (isTrueActive) {
+                trueBtnClass = "bg-sky-500 text-white border-sky-600 shadow-sm ring-2 ring-sky-300 font-bold";
+              }
+              if (isFalseActive) {
+                falseBtnClass = "bg-sky-500 text-white border-sky-600 shadow-sm ring-2 ring-sky-300 font-bold";
+              }
+            } else {
+              // Khi đã nộp bài hoặc chế độ xem trước:
+              // it.isCorrect: true là phương án chuẩn là "Đúng", false là "Sai"
+              if (it.isCorrect) {
+                // Ý này Đúng chuẩn -> Nút Đúng hiển thị Xanh Lá
+                trueBtnClass = "bg-emerald-600 text-white border-emerald-600 font-bold ring-2 ring-emerald-300";
+                if (isFalseActive) {
+                  // Người dùng lỡ bấm "Sai" -> Bị đỏ
+                  falseBtnClass = "bg-red-500 text-white border-red-500 font-bold ring-2 ring-red-300";
+                  rowBorderClass = "border-red-300 bg-red-50/40";
+                  statusFeedback = `<span class="text-xs font-bold text-red-600 ml-2">(Bạn chọn Sai ✗ - Đáp án chuẩn: Đúng)</span>`;
+                } else if (isTrueActive) {
+                  rowBorderClass = "border-emerald-300 bg-emerald-50/40";
+                  statusFeedback = `<span class="text-xs font-bold text-emerald-600 ml-2">(Chính xác ✓)</span>`;
+                }
+              } else {
+                // Ý này Sai chuẩn -> Nút Sai hiển thị Xanh Lá
+                falseBtnClass = "bg-emerald-600 text-white border-emerald-600 font-bold ring-2 ring-emerald-300";
+                if (isTrueActive) {
+                  // Người dùng lỡ bấm "Đúng" -> Bị đỏ
+                  trueBtnClass = "bg-red-500 text-white border-red-500 font-bold ring-2 ring-red-300";
+                  rowBorderClass = "border-red-300 bg-red-50/40";
+                  statusFeedback = `<span class="text-xs font-bold text-red-600 ml-2">(Bạn chọn Đúng ✗ - Đáp án chuẩn: Sai)</span>`;
+                } else if (isFalseActive) {
+                  rowBorderClass = "border-emerald-300 bg-emerald-50/40";
+                  statusFeedback = `<span class="text-xs font-bold text-emerald-600 ml-2">(Chính xác ✓)</span>`;
+                }
+              }
+            }
+
+            html += `
+              <div class="p-3 rounded-xl border ${rowBorderClass} flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition" id="row_${q.id}_${it.label}">
+                <div class="text-xs sm:text-sm flex-1 ${itemTextClass} leading-relaxed">
+                  <span class="font-extrabold uppercase mr-1 text-slate-700">${it.label})</span> ${it.text}
+                  ${statusFeedback}
+                </div>
+                
+                <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                  <button type="button" 
+                          onclick="selectTFOption('${q.id}', '${it.label}', true)"
+                          ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
+                          class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition border ${trueBtnClass} ${isExamSubmitted && !isStudyMode ? 'cursor-default' : ''}">
+                    Đúng
+                  </button>
+                  <button type="button" 
+                          onclick="selectTFOption('${q.id}', '${it.label}', false)"
+                          ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
+                          class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition border ${falseBtnClass} ${isExamSubmitted && !isStudyMode ? 'cursor-default' : ''}">
+                    Sai
+                  </button>
+                </div>
+              </div>
+            `;
+          });
+
+          html += `</div>`;
+          html += `
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div id="msg_${q.id}" class="text-xs font-bold"></div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = html;
+        container.appendChild(card);
+      });
+
+      // Nếu đã nộp bài, chạy chấm chi tiết cho các câu được hiển thị
+      if (isExamSubmitted) {
+        questionsToDisplay.forEach(q => {
+          if (q.type === 'single') checkSingleAnswer(q.id);
+          else if (q.type === 'tf') checkTFAnswer(q.id);
+        });
+      }
+    }
+
+    // CHUYỂN BỘ LỌC XEM KẾT QUẢ (TẤT CẢ / CÂU SAI / CÂU ĐÚNG)
+    window.setPostSubmitFilter = function(filterMode) {
+      postSubmitFilter = filterMode;
+
+      const btnAll = document.getElementById('filterAllQuestionsBtn');
+      const btnWrong = document.getElementById('filterWrongQuestionsBtn');
+      const btnCorrect = document.getElementById('filterCorrectQuestionsBtn');
+
+      // Cập nhật kiểu nút bấm
+      const activeClass = "bg-slate-800 text-white";
+      const inactiveAll = "text-slate-700 hover:bg-slate-100";
+      const inactiveWrong = "text-red-600 hover:bg-red-50";
+      const inactiveCorrect = "text-emerald-600 hover:bg-emerald-50";
+
+      btnAll.className = `px-3 py-1 font-bold rounded-md transition ${filterMode === 'all' ? activeClass : inactiveAll}`;
+      btnWrong.className = `px-3 py-1 font-bold rounded-md transition ${filterMode === 'wrong' ? activeClass : inactiveWrong}`;
+      btnCorrect.className = `px-3 py-1 font-bold rounded-md transition ${filterMode === 'correct' ? activeClass : inactiveCorrect}`;
+
+      renderAllQuestions();
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+    };
+
+    // XỬ LÝ CHỌN CÂU TRẮC NGHIỆM ĐƠN
+    window.selectSingleOption = function(qId, optIdx) {
+      if (isExamSubmitted && !isStudyMode) return;
+      userAnswers[qId] = optIdx;
+      updateProgress();
+      renderAllQuestions();
+    };
+
+    // XỬ LÝ CHỌN CÂU ĐÚNG / SAI
+    window.selectTFOption = function(qId, label, val) {
+      if (isExamSubmitted && !isStudyMode) return;
+      userAnswers[`${qId}_${label}`] = val;
+      updateProgress();
+
+      const row = document.getElementById(`row_${qId}_${label}`);
+      if (row) {
+        const btns = row.querySelectorAll('button');
+        if (val === true) {
+          btns[0].className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition border bg-sky-500 text-white border-sky-600 shadow-sm ring-2 ring-sky-300';
+          btns[1].className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition border bg-white text-slate-700 border-slate-300 hover:bg-slate-100';
+        } else {
+          btns[0].className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition border bg-white text-slate-700 border-slate-300 hover:bg-slate-100';
+          btns[1].className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition border bg-sky-500 text-white border-sky-600 shadow-sm ring-2 ring-sky-300';
+        }
+      }
+    };
+
+    // CHẤM ĐIỂM CÂU ĐƠN SAU KHI NỘP BÀI
+    function checkSingleAnswer(qId) {
+      const q = currentQuestions.find(item => item.id === qId);
+      if (!q) return;
+
+      const chosenIdx = userAnswers[qId];
+      const msg = document.getElementById(`msg_${qId}`);
+      if (!msg) return;
+
+      if (chosenIdx === undefined) {
+        msg.className = "text-xs font-bold text-amber-600";
+        msg.textContent = "⚠️ Bạn chưa chọn câu trả lời này.";
+      } else if (q.options[chosenIdx].isCorrect) {
+        msg.className = "text-xs font-bold text-emerald-600";
+        msg.textContent = "✓ Chính xác!";
+      } else {
+        msg.className = "text-xs font-bold text-red-600";
+        msg.textContent = "✗ Chưa chính xác! Vui lòng đối chiếu với đáp án Xanh lá.";
+      }
+    }
+
+    // CHẤM ĐIỂM CÂU ĐÚNG / SAI SAU KHI NỘP BÀI
+    function checkTFAnswer(qId) {
+      const q = currentQuestions.find(item => item.id === qId);
+      if (!q) return;
+
+      const msg = document.getElementById(`msg_${qId}`);
+      if (!msg) return;
+
+      let correctCount = 0;
+      let unanswered = 0;
+
+      q.items.forEach(it => {
+        const userChoice = userAnswers[`${qId}_${it.label}`];
+        if (userChoice === undefined) {
+          unanswered++;
+        } else if (userChoice === it.isCorrect) {
+          correctCount++;
+        }
+      });
+
+      if (unanswered > 0) {
+        msg.className = "text-xs font-bold text-amber-600";
+        msg.textContent = `⚠️ Bạn còn ${unanswered} ý chưa chọn.`;
+      } else if (correctCount === 4) {
+        msg.className = "text-xs font-bold text-emerald-600";
+        msg.textContent = `✓ Xuất sắc! Bạn làm đúng 4/4 ý.`;
+      } else {
+        msg.className = "text-xs font-bold text-red-600";
+        msg.textContent = `✗ Bạn làm đúng ${correctCount}/4 ý. Hãy đối chiếu với đáp án chuẩn (Xanh lá).`;
+      }
+    }
+
+    // GẮN CÁC SỰ KIỆN KHI TRANG TẢI XONG
+    window.addEventListener('DOMContentLoaded', () => {
+      const startScreen = document.getElementById('startScreen');
+      const examScreen = document.getElementById('examScreen');
+      const startExamBtn = document.getElementById('startExamBtn');
+      const backToConfigBtn = document.getElementById('backToConfigBtn');
+      const submitExamBtn = document.getElementById('submitExamBtn');
+      const resetCurrentExamBtn = document.getElementById('resetCurrentExamBtn');
+
+      // Bấm nút "BẮT ĐẦU ÔN LUYỆN" từ màn hình thiết lập
+      startExamBtn.addEventListener('click', () => {
+        const lessonVal = document.getElementById('selectedLessonValue').value || 'all';
+        const shuffleVal = document.querySelector('input[name="shuffleOption"]:checked').value;
+        const modeVal = document.querySelector('input[name="modeOption"]:checked').value;
+
+        currentFilter = lessonVal;
+        postSubmitFilter = 'all';
+        isShuffle = (shuffleVal === 'yes');
+        isStudyMode = (modeVal === 'study');
+        isExamSubmitted = false;
+        userAnswers = {};
+
+        // Ẩn thanh lọc câu sai khi bắt đầu làm bài mới
+        document.getElementById('postSubmitFilterBar').classList.add('hidden');
+
+        // Cập nhật nhãn bài đang ôn trên thanh Header
+        const currentTitle = document.getElementById('selectedLessonTitle').textContent.trim();
+        document.getElementById('currentLessonBadge').textContent = currentTitle;
+
+        // Cập nhật trạng thái
+        const statusText = document.getElementById('examStatusText');
+        if (isStudyMode) {
+          statusText.textContent = "Chế độ tra cứu (Hiện sẵn đáp án)";
+          submitExamBtn.classList.add('hidden');
+        } else {
+          statusText.textContent = "Đang làm bài (Nộp bài để chấm điểm)";
+          submitExamBtn.classList.remove('hidden');
+        }
+
+        // Chuyển màn hình
+        startScreen.classList.add('hidden');
+        examScreen.classList.remove('hidden');
+
+        buildQuestionSet();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Xử lý đóng/mở và chọn bài qua Dropdown thu gọn
+      const dropdownBtn = document.getElementById('lessonDropdownBtn');
+      const dropdownMenu = document.getElementById('lessonDropdownMenu');
+      const dropdownArrow = document.getElementById('dropdownArrow');
+      const lessonOptions = document.querySelectorAll('.lesson-option');
+      const hiddenInput = document.getElementById('selectedLessonValue');
+
+      dropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !dropdownMenu.classList.contains('hidden');
+        if (isOpen) {
+          dropdownMenu.classList.add('hidden');
+          dropdownArrow.classList.remove('rotate-180');
+        } else {
+          dropdownMenu.classList.remove('hidden');
+          dropdownArrow.classList.add('rotate-180');
+        }
+      });
+
+      // Bấm chọn một mục trong danh sách
+      lessonOptions.forEach(opt => {
+        opt.addEventListener('click', () => {
+          const val = opt.getAttribute('data-value');
+          const title = opt.getAttribute('data-title');
+          const desc = opt.getAttribute('data-desc');
+          const icon = opt.getAttribute('data-icon');
+
+          hiddenInput.value = val;
+          document.getElementById('selectedLessonIcon').textContent = icon;
+          document.getElementById('selectedLessonTitle').textContent = title;
+          document.getElementById('selectedLessonDesc').textContent = desc;
+
+          // Cập nhật dấu tích và màu nền active
+          lessonOptions.forEach(o => {
+            o.classList.remove('bg-blue-50/60');
+            const check = o.querySelector('.checkmark');
+            if (check) check.classList.add('hidden');
+          });
+          opt.classList.add('bg-blue-50/60');
+          const activeCheck = opt.querySelector('.checkmark');
+          if (activeCheck) activeCheck.classList.remove('hidden');
+
+          // Đóng dropdown sau khi chọn
+          dropdownMenu.classList.add('hidden');
+          dropdownArrow.classList.remove('rotate-180');
+        });
+      });
+
+      // Bấm ra ngoài thì tự đóng menu
+      document.addEventListener('click', (e) => {
+        if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.classList.add('hidden');
+          dropdownArrow.classList.remove('rotate-180');
+        }
+      });
+
+      // Bấm nút quay lại màn hình chọn bài
+      backToConfigBtn.addEventListener('click', () => {
+        showAppModal({
+          title: 'Quay lại màn hình chính',
+          message: 'Bạn có muốn dừng bài làm hiện tại để quay lại màn hình tùy chọn không?',
+          icon: '?',
+          type: 'info',
+          confirmText: 'Quay lại',
+          cancelText: 'Ở lại làm tiếp',
+          onConfirm: () => {
+            examScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+            document.getElementById('postSubmitFilterBar').classList.add('hidden');
+          }
+        });
+      });
+
+      // Bấm nút làm lại đề hiện tại
+      resetCurrentExamBtn.addEventListener('click', () => {
+        showAppModal({
+          title: 'Xác nhận làm lại',
+          message: 'Bạn có chắc chắn muốn xóa toàn bộ kết quả đã chọn để thi lại không?',
+          icon: '?',
+          type: 'danger',
+          confirmText: 'Làm lại ngay',
+          cancelText: 'Hủy',
+          onConfirm: () => {
+            userAnswers = {};
+            isExamSubmitted = false;
+            postSubmitFilter = 'all';
+            document.getElementById('postSubmitFilterBar').classList.add('hidden');
+            document.getElementById('examStatusText').textContent = "Đang làm bài (Nộp bài để chấm điểm)";
+            submitExamBtn.classList.remove('hidden');
+            buildQuestionSet();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Bấm nút "NỘP BÀI & XEM ĐÁP ÁN"
+      submitExamBtn.addEventListener('click', () => {
+        if (isExamSubmitted) {
+          showAppModal({
+            title: 'Thông báo',
+            message: 'Bài thi này đã được nộp. Bạn có thể sử dụng các nút lọc ở thanh trên để xem riêng các câu sai.',
+            icon: 'i',
+            type: 'info',
+            confirmText: 'Đã hiểu'
+          });
+          return;
+        }
+
+        // Kiểm tra số câu chưa làm
+        let uncompleted = 0;
+        currentQuestions.forEach(q => {
+          if (q.type === 'single') {
+            if (userAnswers[q.id] === undefined) uncompleted++;
+          } else if (q.type === 'tf') {
+            const hasEmpty = q.items.some(it => userAnswers[`${q.id}_${it.label}`] === undefined);
+            if (hasEmpty) uncompleted++;
+          }
+        });
+
+        const performSubmit = () => {
+          isExamSubmitted = true;
+          document.getElementById('examStatusText').textContent = "Đã nộp bài (Hiển thị đáp án chi tiết)";
+          
+          // Hiện thanh lọc kết quả: Tất cả / Câu sai / Câu đúng
+          document.getElementById('postSubmitFilterBar').classList.remove('hidden');
+
+          let totalUnits = 0;
+          let correctUnits = 0;
+          let wrongQuestionCount = 0;
+
+          currentQuestions.forEach(q => {
+            let isQCorrect = false;
+            if (q.type === 'single') {
+              totalUnits += 1;
+              if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                correctUnits += 1;
+                isQCorrect = true;
+              }
+            } else if (q.type === 'tf') {
+              totalUnits += 4;
+              let currentQCorrectItems = 0;
+              q.items.forEach(it => {
+                if (userAnswers[`${q.id}_${it.label}`] === it.isCorrect) {
+                  correctUnits += 1;
+                  currentQCorrectItems++;
+                }
+              });
+              if (currentQCorrectItems === 4) isQCorrect = true;
+            }
+
+            if (!isQCorrect) wrongQuestionCount++;
+          });
+
+          renderAllQuestions();
+
+          const percent = totalUnits > 0 ? Math.round((correctUnits / totalUnits) * 100) : 0;
+          const noticeEl = document.getElementById('wrongNoticeText');
+          if (noticeEl) {
+            noticeEl.innerHTML = wrongQuestionCount > 0 
+              ? `Có <strong class="text-red-600">${wrongQuestionCount} câu</strong> cần xem lại.`
+              : `<strong class="text-emerald-600">Làm đúng 100% câu hỏi!</strong>`;
+          }
+
+          if (wrongQuestionCount > 0) {
+            showAppModal({
+              title: 'Kết quả bài thi',
+              message: `Bạn làm đúng <strong>${correctUnits}/${totalUnits}</strong> ý (đạt <strong>${percent}%</strong>).<br>Có <strong>${wrongQuestionCount} câu</strong> bạn làm sai hoặc chưa hoàn thiện.<br><br>Bạn có muốn <strong>xem riêng các câu sai</strong> để rút kinh nghiệm ngay không?`,
+              icon: '⚠️',
+              type: 'info',
+              confirmText: 'Xem các câu sai',
+              cancelText: 'Xem toàn bộ đề',
+              onConfirm: () => {
+                setPostSubmitFilter('wrong');
+              }
+            });
+          } else {
+            showAppModal({
+              title: 'Chúc mừng!',
+              message: `Bạn đạt điểm tuyệt đối <strong>${correctUnits}/${totalUnits}</strong> ý (tỉ lệ <strong>100%</strong>)!<br><br>Tất cả đáp án đều hoàn toàn chính xác (Xanh lá).`,
+              icon: '✓',
+              type: 'success',
+              confirmText: 'Xem chi tiết đề'
+            });
+          }
+        };
+
+        if (uncompleted > 0) {
+          showAppModal({
+            title: 'Chưa làm xong bài!',
+            message: `Bạn vẫn còn <strong>${uncompleted} câu</strong> chưa hoàn tất. Bạn có chắc chắn muốn nộp bài luôn không?`,
+            icon: '!',
+            type: 'danger',
+            confirmText: 'Nộp bài luôn',
+            cancelText: 'Làm tiếp',
+            onConfirm: performSubmit
+          });
+        } else {
+          performSubmit();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
