@@ -208,21 +208,22 @@
   <div id="examScreen" class="hidden min-h-screen flex flex-col">
     <!-- Header cố định -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-20 shadow-sm">
-      <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-        <div class="flex items-center gap-2">
-          <button id="backToConfigBtn" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-600 text-xs font-bold flex items-center gap-1 border border-slate-200">
-            <span>‹</span> Chọn lại bài
+      <div class="max-w-5xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-1.5 min-w-0 flex-1">
+          <button id="backToConfigBtn" class="shrink-0 p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center gap-1 border border-slate-200 shadow-sm active:scale-95 transition">
+            <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="hidden xs:inline sm:inline">Chọn lại</span>
           </button>
-          <h2 id="currentLessonBadge" class="text-xs sm:text-sm font-bold text-blue-700 truncate max-w-[200px] sm:max-w-xs">
+          <h2 id="currentLessonBadge" class="text-xs sm:text-sm font-bold text-blue-700 truncate flex-1 min-w-0 pl-1">
             Bài 1
           </h2>
         </div>
 
-        <div class="flex items-center gap-3">
-          <div class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-700">
+        <div class="flex items-center gap-2 shrink-0">
+          <div class="bg-slate-100 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg border border-slate-200 text-[11px] sm:text-xs font-bold text-slate-700 whitespace-nowrap">
             Tiến độ: <span id="progressCount" class="text-blue-600">0</span>/<span id="totalQuestionsCount">0</span>
           </div>
-          <button id="resetCurrentExamBtn" class="text-xs text-slate-600 hover:text-blue-600 border border-slate-200 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 transition">
+          <button id="resetCurrentExamBtn" class="text-[11px] sm:text-xs text-slate-600 hover:text-blue-600 border border-slate-200 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg hover:bg-slate-50 transition active:scale-95">
             Làm lại
           </button>
         </div>
@@ -230,43 +231,43 @@
     </header>
 
     <!-- Thẻ nhắc nhở & giải thích màu sắc -->
-    <div class="bg-white border-b border-slate-200 py-2">
-      <div class="max-w-4xl mx-auto px-4 flex flex-wrap justify-between items-center gap-2 text-xs text-slate-600">
-        <div>
+    <div class="bg-white border-b border-slate-200 py-1.5 sm:py-2">
+      <div class="max-w-4xl mx-auto px-3 sm:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 text-[11px] sm:text-xs text-slate-600">
+        <div class="truncate">
           Trạng thái: <span id="examStatusText" class="font-bold text-slate-900">Đang làm bài...</span>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="flex items-center gap-1 font-bold text-blue-600">● Đang chọn: Xanh nước</span>
-          <span class="flex items-center gap-1 font-bold text-emerald-600">● Đúng: Xanh lá</span>
-          <span class="flex items-center gap-1 font-bold text-red-600">● Sai: Đỏ</span>
+        <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs overflow-x-auto">
+          <span class="flex items-center gap-0.5 font-bold text-blue-600 whitespace-nowrap">● Đang chọn: Xanh nước</span>
+          <span class="flex items-center gap-0.5 font-bold text-emerald-600 whitespace-nowrap">● Đúng: Xanh lá</span>
+          <span class="flex items-center gap-0.5 font-bold text-red-600 whitespace-nowrap">● Sai: Đỏ</span>
         </div>
       </div>
     </div>
 
     <!-- Thanh lọc kết quả sau khi nộp bài -->
-    <div id="postSubmitFilterBar" class="hidden bg-slate-100 border-b border-slate-200 py-2.5">
-      <div class="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div class="flex items-center gap-2">
-          <span class="font-bold text-slate-700">Lọc kết quả:</span>
-          <div class="inline-flex rounded-lg border border-slate-300 bg-white p-0.5" role="group">
-            <button type="button" id="filterAllQuestionsBtn" onclick="setPostSubmitFilter('all')" class="px-3 py-1 font-bold rounded-md bg-slate-800 text-white transition">
+    <div id="postSubmitFilterBar" class="hidden bg-slate-100 border-b border-slate-200 py-2">
+      <div class="max-w-4xl mx-auto px-3 sm:px-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+        <div class="flex items-center gap-1.5 w-full sm:w-auto">
+          <span class="font-bold text-slate-700 text-[11px] shrink-0">Lọc:</span>
+          <div class="inline-flex rounded-lg border border-slate-300 bg-white p-0.5 w-full sm:w-auto justify-between" role="group">
+            <button type="button" id="filterAllQuestionsBtn" onclick="setPostSubmitFilter('all')" class="flex-1 sm:flex-initial text-center px-2 sm:px-3 py-1 font-bold rounded-md bg-slate-800 text-white transition text-[11px] sm:text-xs">
               Tất cả (<span id="countFilterAll">0</span>)
             </button>
-            <button type="button" id="filterWrongQuestionsBtn" onclick="setPostSubmitFilter('wrong')" class="px-3 py-1 font-bold rounded-md text-red-600 hover:bg-red-50 transition">
-              ⚠️ Chỉ câu sai (<span id="countFilterWrong">0</span>)
+            <button type="button" id="filterWrongQuestionsBtn" onclick="setPostSubmitFilter('wrong')" class="flex-1 sm:flex-initial text-center px-2 sm:px-3 py-1 font-bold rounded-md text-red-600 hover:bg-red-50 transition text-[11px] sm:text-xs">
+              ⚠️ Sai (<span id="countFilterWrong">0</span>)
             </button>
-            <button type="button" id="filterCorrectQuestionsBtn" onclick="setPostSubmitFilter('correct')" class="px-3 py-1 font-bold rounded-md text-emerald-600 hover:bg-emerald-50 transition">
-              ✓ Chỉ câu đúng (<span id="countFilterCorrect">0</span>)
+            <button type="button" id="filterCorrectQuestionsBtn" onclick="setPostSubmitFilter('correct')" class="flex-1 sm:flex-initial text-center px-2 sm:px-3 py-1 font-bold rounded-md text-emerald-600 hover:bg-emerald-50 transition text-[11px] sm:text-xs">
+              ✓ Đúng (<span id="countFilterCorrect">0</span>)
             </button>
           </div>
         </div>
-        <div id="wrongNoticeText" class="text-xs font-semibold text-slate-600"></div>
+        <div id="wrongNoticeText" class="text-[11px] sm:text-xs font-semibold text-slate-600"></div>
       </div>
     </div>
 
     <!-- Khung hiển thị danh sách câu hỏi -->
-    <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 flex-1">
-      <div id="questionsContainer" class="space-y-6">
+    <main class="max-w-4xl w-full mx-auto p-3 sm:p-6 flex-1">
+      <div id="questionsContainer" class="space-y-4 sm:space-y-6">
         <!-- Render danh sách câu hỏi bằng JavaScript -->
       </div>
     </main>
@@ -1478,19 +1479,19 @@
         let statusTag = '';
         if (isExamSubmitted && !isStudyMode) {
           statusTag = isCorrect 
-            ? `<span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-full">✓ Đúng</span>`
-            : `<span class="bg-red-100 text-red-700 text-[11px] font-bold px-2 py-0.5 rounded-full">⚠️ Làm sai</span>`;
+            ? `<span class="inline-flex items-center bg-emerald-100 text-emerald-800 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap">✓ Đúng</span>`
+            : `<span class="inline-flex items-center bg-red-100 text-red-700 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap">⚠️ Làm sai</span>`;
         }
 
         let html = `
-          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2.5">
-            <div class="flex items-center gap-2">
-              <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3 border-b border-slate-100 pb-2.5">
+            <div class="flex flex-wrap items-center gap-1.5 max-w-full">
+              <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2 py-0.5 sm:py-1 rounded-md">
                 ${q.lessonTitle}
               </span>
               ${statusTag}
             </div>
-            <span class="text-xs font-bold text-slate-400">
+            <span class="text-[11px] sm:text-xs font-bold text-slate-400 whitespace-nowrap">
               Câu ${originalIndex + 1}/${currentQuestions.length} • ${q.type === 'single' ? '4 Lựa chọn' : 'Đúng / Sai'}
             </span>
           </div>
@@ -1498,19 +1499,19 @@
 
         if (q.quote) {
           html += `
-            <div class="mb-4 bg-slate-100 border-l-4 border-blue-500 p-3 rounded-r-xl text-xs sm:text-sm text-slate-700 italic leading-relaxed whitespace-pre-line">
+            <div class="mb-4 bg-slate-100 border-l-4 border-blue-500 p-2.5 sm:p-3 rounded-r-xl text-xs sm:text-sm text-slate-700 italic leading-relaxed whitespace-pre-line">
               ${q.quote}
             </div>
           `;
         }
 
-        html += `<p class="font-bold text-slate-900 text-sm sm:text-base mb-4 leading-relaxed">${q.question}</p>`;
+        html += `<p class="font-bold text-slate-900 text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed">${q.question}</p>`;
 
         const isAnswerRevealed = isExamSubmitted || isStudyMode;
 
         // DẠNG TRẮC NGHIỆM ĐƠN (4 LỰA CHỌN)
         if (q.type === 'single') {
-          html += `<div class="space-y-2.5" id="opt_container_${q.id}">`;
+          html += `<div class="space-y-2 sm:space-y-2.5" id="opt_container_${q.id}">`;
 
           q.options.forEach((opt, optIndex) => {
             const isChecked = userAnswers[q.id] === optIndex;
@@ -1523,12 +1524,12 @@
                 // ĐÁP ÁN ĐÚNG: Xanh lá cây
                 textClass = "text-emerald-800 font-bold";
                 labelClass = "border-emerald-500 bg-emerald-50/80 ring-1 ring-emerald-400";
-                badgeHtml = `<span class="ml-auto text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">✓ Đáp án đúng</span>`;
+                badgeHtml = `<span class="self-end sm:self-center sm:ml-auto text-[10px] sm:text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">✓ Đáp án đúng</span>`;
               } else if (isChecked && !opt.isCorrect) {
                 // ĐÁP ÁN NGƯỜI DÙNG CHỌN SAI: Đỏ
                 textClass = "text-red-700 font-bold";
                 labelClass = "border-red-500 bg-red-50/80 ring-1 ring-red-400";
-                badgeHtml = `<span class="ml-auto text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">✗ Bạn chọn sai</span>`;
+                badgeHtml = `<span class="self-end sm:self-center sm:ml-auto text-[10px] sm:text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">✗ Bạn chọn sai</span>`;
               } else {
                 textClass = "text-slate-500";
                 labelClass = "border-slate-200 bg-slate-50/50 opacity-70";
@@ -1540,16 +1541,18 @@
             }
 
             html += `
-              <label class="flex items-center gap-3 p-3 rounded-xl border ${labelClass} cursor-pointer transition select-none">
-                <input type="radio" 
-                       name="rad_${q.id}" 
-                       value="${optIndex}" 
-                       ${isChecked ? 'checked' : ''}
-                       ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
-                       class="w-4 h-4 text-sky-600 focus:ring-sky-500 cursor-pointer"
-                       onchange="selectSingleOption('${q.id}', ${optIndex})">
-                <div class="text-xs sm:text-sm ${textClass} leading-relaxed">
-                  <span class="font-extrabold mr-1.5">${letters[optIndex]}.</span>${opt.text}
+              <label class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl border ${labelClass} cursor-pointer transition select-none">
+                <div class="flex items-start gap-2.5 flex-1 min-w-0">
+                  <input type="radio" 
+                         name="rad_${q.id}" 
+                         value="${optIndex}" 
+                         ${isChecked ? 'checked' : ''}
+                         ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
+                         class="mt-0.5 sm:mt-0 w-4 h-4 shrink-0 text-sky-600 focus:ring-sky-500 cursor-pointer"
+                         onchange="selectSingleOption('${q.id}', ${optIndex})">
+                  <div class="text-xs sm:text-sm ${textClass} leading-relaxed">
+                    <span class="font-extrabold mr-1 text-slate-800">${letters[optIndex]}.</span>${opt.text}
+                  </div>
                 </div>
                 ${badgeHtml}
               </label>
@@ -1558,14 +1561,14 @@
 
           html += `</div>`;
           html += `
-            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-              <div id="msg_${q.id}" class="text-xs font-bold"></div>
+            <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div id="msg_${q.id}" class="text-[11px] sm:text-xs font-bold"></div>
             </div>
           `;
 
         // DẠNG TRẮC NGHIỆM ĐÚNG / SAI
         } else if (q.type === 'tf') {
-          html += `<div class="space-y-3" id="tf_container_${q.id}">`;
+          html += `<div class="space-y-2.5 sm:space-y-3" id="tf_container_${q.id}">`;
 
           q.items.forEach(it => {
             const userChoice = userAnswers[`${q.id}_${it.label}`];
@@ -1590,36 +1593,31 @@
               }
             } else {
               // Khi đã nộp bài hoặc chế độ xem trước:
-              // it.isCorrect: true là phương án chuẩn là "Đúng", false là "Sai"
               if (it.isCorrect) {
-                // Ý này Đúng chuẩn -> Nút Đúng hiển thị Xanh Lá
                 trueBtnClass = "bg-emerald-600 text-white border-emerald-600 font-bold ring-2 ring-emerald-300";
                 if (isFalseActive) {
-                  // Người dùng lỡ bấm "Sai" -> Bị đỏ
                   falseBtnClass = "bg-red-500 text-white border-red-500 font-bold ring-2 ring-red-300";
                   rowBorderClass = "border-red-300 bg-red-50/40";
-                  statusFeedback = `<span class="text-xs font-bold text-red-600 ml-2">(Bạn chọn Sai ✗ - Đáp án chuẩn: Đúng)</span>`;
+                  statusFeedback = `<span class="block sm:inline text-[11px] sm:text-xs font-bold text-red-600 sm:ml-2 mt-0.5 sm:mt-0">(Bạn chọn Sai ✗ - Chuẩn: Đúng)</span>`;
                 } else if (isTrueActive) {
                   rowBorderClass = "border-emerald-300 bg-emerald-50/40";
-                  statusFeedback = `<span class="text-xs font-bold text-emerald-600 ml-2">(Chính xác ✓)</span>`;
+                  statusFeedback = `<span class="block sm:inline text-[11px] sm:text-xs font-bold text-emerald-600 sm:ml-2 mt-0.5 sm:mt-0">(Chính xác ✓)</span>`;
                 }
               } else {
-                // Ý này Sai chuẩn -> Nút Sai hiển thị Xanh Lá
                 falseBtnClass = "bg-emerald-600 text-white border-emerald-600 font-bold ring-2 ring-emerald-300";
                 if (isTrueActive) {
-                  // Người dùng lỡ bấm "Đúng" -> Bị đỏ
                   trueBtnClass = "bg-red-500 text-white border-red-500 font-bold ring-2 ring-red-300";
                   rowBorderClass = "border-red-300 bg-red-50/40";
-                  statusFeedback = `<span class="text-xs font-bold text-red-600 ml-2">(Bạn chọn Đúng ✗ - Đáp án chuẩn: Sai)</span>`;
+                  statusFeedback = `<span class="block sm:inline text-[11px] sm:text-xs font-bold text-red-600 sm:ml-2 mt-0.5 sm:mt-0">(Bạn chọn Đúng ✗ - Chuẩn: Sai)</span>`;
                 } else if (isFalseActive) {
                   rowBorderClass = "border-emerald-300 bg-emerald-50/40";
-                  statusFeedback = `<span class="text-xs font-bold text-emerald-600 ml-2">(Chính xác ✓)</span>`;
+                  statusFeedback = `<span class="block sm:inline text-[11px] sm:text-xs font-bold text-emerald-600 sm:ml-2 mt-0.5 sm:mt-0">(Chính xác ✓)</span>`;
                 }
               }
             }
 
             html += `
-              <div class="p-3 rounded-xl border ${rowBorderClass} flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition" id="row_${q.id}_${it.label}">
+              <div class="p-2.5 sm:p-3 rounded-xl border ${rowBorderClass} flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 transition" id="row_${q.id}_${it.label}">
                 <div class="text-xs sm:text-sm flex-1 ${itemTextClass} leading-relaxed">
                   <span class="font-extrabold uppercase mr-1 text-slate-700">${it.label})</span> ${it.text}
                   ${statusFeedback}
@@ -1629,13 +1627,13 @@
                   <button type="button" 
                           onclick="selectTFOption('${q.id}', '${it.label}', true)"
                           ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
-                          class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition border ${trueBtnClass} ${isExamSubmitted && !isStudyMode ? 'cursor-default' : ''}">
+                          class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-xs font-bold transition border ${trueBtnClass} ${isExamSubmitted && !isStudyMode ? 'cursor-default' : ''}">
                     Đúng
                   </button>
                   <button type="button" 
                           onclick="selectTFOption('${q.id}', '${it.label}', false)"
                           ${isExamSubmitted && !isStudyMode ? 'disabled' : ''}
-                          class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition border ${falseBtnClass} ${isExamSubmitted && !isStudyMode ? 'cursor-default' : ''}">
+                          class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-xs font-bold transition border ${falseBtnClass} ${isExamSubmitted && !isStudyMode ? 'cursor-default' : ''}">
                     Sai
                   </button>
                 </div>
@@ -1645,8 +1643,8 @@
 
           html += `</div>`;
           html += `
-            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-              <div id="msg_${q.id}" class="text-xs font-bold"></div>
+            <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div id="msg_${q.id}" class="text-[11px] sm:text-xs font-bold"></div>
             </div>
           `;
         }
@@ -1871,17 +1869,28 @@
 
       // Bấm nút quay lại màn hình chọn bài
       backToConfigBtn.addEventListener('click', () => {
+        // Nếu đã nộp bài hoặc đang ở chế độ xem trước đáp án -> ra thẳng màn hình chính, không hỏi
+        if (isExamSubmitted || isStudyMode) {
+          examScreen.classList.add('hidden');
+          startScreen.classList.remove('hidden');
+          document.getElementById('postSubmitFilterBar').classList.add('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+
+        // Nếu đang trong quá trình làm dở bài thi mới hiện xác nhận để tránh mất bài làm
         showAppModal({
           title: 'Quay lại màn hình chính',
-          message: 'Bạn có muốn dừng bài làm hiện tại để quay lại màn hình tùy chọn không?',
+          message: 'Bạn đang làm dở bài thi. Bạn có muốn thoát ra màn hình tùy chọn không?',
           icon: '?',
           type: 'info',
-          confirmText: 'Quay lại',
-          cancelText: 'Ở lại làm tiếp',
+          confirmText: 'Thoát ra',
+          cancelText: 'Làm tiếp',
           onConfirm: () => {
             examScreen.classList.add('hidden');
             startScreen.classList.remove('hidden');
             document.getElementById('postSubmitFilterBar').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
       });
